@@ -1,0 +1,170 @@
+#include <Rcpp.h>
+
+RcppExport SEXP sourceCpp_65820_pq(SEXP dxSEXP, SEXP uxSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type ux(uxSEXP );
+        arma::colvec __result = pq(dx, ux);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_65820_genU(SEXP nSEXP, SEXP uxSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< int >::type n(nSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type ux(uxSEXP );
+        arma::Mat<double> __result = genU(n, ux);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_65820_ProjQuant(SEXP dxSEXP, SEXP uxSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type ux(uxSEXP );
+        Rcpp::traits::input_parameter< int >::type n(nSEXP );
+        arma::Mat<double> __result = ProjQuant(dx, ux, n);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_65820_KMeanDist(SEXP dxSEXP, SEXP pxSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type px(pxSEXP );
+        Rcpp::traits::input_parameter< unsigned int >::type k(kSEXP );
+        double __result = KMeanDist(dx, px, k);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_65820_OrthoProjVecNorm(SEXP dxSEXP, SEXP uxSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type ux(uxSEXP );
+        arma::colvec __result = OrthoProjVecNorm(dx, ux);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_65820_WtProjQuant(SEXP dxSEXP, SEXP uxSEXP, SEXP weSEXP, SEXP diSEXP, SEXP aSEXP, SEXP bSEXP, SEXP lSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type ux(uxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type we(weSEXP );
+        Rcpp::traits::input_parameter< double >::type di(diSEXP );
+        Rcpp::traits::input_parameter< float >::type a(aSEXP );
+        Rcpp::traits::input_parameter< float >::type b(bSEXP );
+        Rcpp::traits::input_parameter< float >::type l(lSEXP );
+        arma::colvec __result = WtProjQuant(dx, ux, we, di, a, b, l);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_65820_WtProjQuantProfile(SEXP dxSEXP, SEXP uxSEXP, SEXP nSEXP, SEXP kSEXP, SEXP aSEXP, SEXP bSEXP, SEXP lSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type ux(uxSEXP );
+        Rcpp::traits::input_parameter< int >::type n(nSEXP );
+        Rcpp::traits::input_parameter< int >::type k(kSEXP );
+        Rcpp::traits::input_parameter< float >::type a(aSEXP );
+        Rcpp::traits::input_parameter< float >::type b(bSEXP );
+        Rcpp::traits::input_parameter< float >::type l(lSEXP );
+        Rcpp::NumericVector __result = WtProjQuantProfile(dx, ux, n, k, a, b, l);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_65820_ProjQuantileDepth(SEXP dxSEXP, SEXP uxSEXP, SEXP kSEXP, SEXP aSEXP, SEXP bSEXP, SEXP lSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type ux(uxSEXP );
+        Rcpp::traits::input_parameter< int >::type k(kSEXP );
+        Rcpp::traits::input_parameter< float >::type a(aSEXP );
+        Rcpp::traits::input_parameter< float >::type b(bSEXP );
+        Rcpp::traits::input_parameter< float >::type l(lSEXP );
+        double __result = ProjQuantileDepth(dx, ux, k, a, b, l);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_65820_WtProjQuantMod(SEXP dxSEXP, SEXP uxSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type ux(uxSEXP );
+        Rcpp::traits::input_parameter< float >::type k(kSEXP );
+        arma::colvec __result = WtProjQuantMod(dx, ux, k);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_65820_WtProjQuantProfileMod(SEXP dxSEXP, SEXP uxSEXP, SEXP kSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type ux(uxSEXP );
+        Rcpp::traits::input_parameter< float >::type k(kSEXP );
+        Rcpp::traits::input_parameter< int >::type n(nSEXP );
+        Rcpp::NumericVector __result = WtProjQuantProfileMod(dx, ux, k, n);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
