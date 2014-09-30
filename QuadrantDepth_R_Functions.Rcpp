@@ -1,0 +1,136 @@
+#include <Rcpp.h>
+
+RcppExport SEXP sourceCpp_23893_IsInQuadrant(SEXP pxSEXP, SEXP xxSEXP, SEXP exSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericVector >::type px(pxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type xx(xxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type ex(exSEXP );
+        int __result = IsInQuadrant(px, xx, ex);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_23893_QuadrantFrac(SEXP dxSEXP, SEXP xSEXP, SEXP eSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type e(eSEXP );
+        float __result = QuadrantFrac(dx, x, e);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_23893_ecdf(SEXP dxSEXP, SEXP xSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP );
+        float __result = ecdf(dx, x);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_23893_ecdfGrid(SEXP dxSEXP, SEXP xxSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericMatrix >::type xx(xxSEXP );
+        arma::colvec __result = ecdfGrid(dx, xx);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_23893_GenQuadIndicator(SEXP xSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP );
+        Rcpp::NumericMatrix __result = GenQuadIndicator(x);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_23893_depthx(SEXP dxSEXP, SEXP pxSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type px(pxSEXP );
+        double __result = depthx(dx, px);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_23893_medianp(SEXP dxSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        NumericVector __result = medianp(dx);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_23893_DepthGrid(SEXP dxSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        NumericVector __result = DepthGrid(dx);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+
+RcppExport SEXP sourceCpp_23893_CenterScale(SEXP dxSEXP, SEXP mxSEXP, SEXP SSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< NumericMatrix >::type dx(dxSEXP );
+        Rcpp::traits::input_parameter< NumericVector >::type mx(mxSEXP );
+        Rcpp::traits::input_parameter< double >::type S(SSEXP );
+        NumericMatrix __result = CenterScale(dx, mx, S);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
