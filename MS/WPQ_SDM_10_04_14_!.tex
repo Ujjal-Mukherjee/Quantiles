@@ -1,0 +1,137 @@
+
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%  ltexpprt.tex  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This is ltexpprt.tex, an example file for use with the SIAM LaTeX2E
+% Preprint Series macros. It is designed to provide double-column output. 
+% Please take the time to read the following comments, as they document
+% how to use these macros. This file can be composed and printed out for
+% use as sample output.
+
+
+% This file is to be used as an example for style only. It should not be read
+% for content.
+
+%%%%%%%%%%%%%%% PLEASE NOTE THE FOLLOWING STYLE RESTRICTIONS %%%%%%%%%%%%%%%
+
+%%  1. There are no new tags.  Existing LaTeX tags have been formatted to match
+%%     the Preprint series style.    
+%%
+%%  2. You must use \cite in the text to mark your reference citations and 
+%%     \bibitem in the listing of references at the end of your chapter. See
+%%     the examples in the following file. If you are using BibTeX, please
+%%     supply the bst file with the manuscript file.
+%% 
+%%  3. This macro is set up for two levels of headings (\section and 
+%%     \subsection). The macro will automatically number the headings for you.
+%%
+%%  5. No running heads are to be used for this volume.
+%% 
+%%  6. Theorems, Lemmas, Definitions, etc. are to be double numbered, 
+%%     indicating the section and the occurence of that element
+%%     within that section. (For example, the first theorem in the second
+%%     section would be numbered 2.1. The macro will 
+%%     automatically do the numbering for you.
+%%
+%%  7. Figures, equations, and tables must be single-numbered. 
+%%     Use existing LaTeX tags for these elements.
+%%     Numbering will be done automatically.
+%%   
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\documentclass[twoside,leqno,twocolumn]{article}  
+\usepackage{../../../StyleFiles/ltexpprt} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+
+
+%\setcounter{chapter}{2} % If you are doing your chapter as chapter one,
+%\setcounter{section}{3} % comment these two lines out.
+
+\title{\Large Weighted projection quantile: a new multivariate quantile}
+\author{Ujjal Kumar Mukherjee\thanks{Carlson School of Management, University of Minnesota} \\
+\and
+Subhabrata Majumdar\thanks{School of Statistics, University of Minnesota}\\
+\and 
+Snigdhansu Chatterjee\thanks{School of Statistics, University of Minnesota}}
+\date{}
+
+\maketitle
+
+ 
+%\pagenumbering{arabic}
+%\setcounter{page}{1}%Leave this line commented out.
+
+\begin{abstract} \small\baselineskip=9pt 
+
+We develop a new notion of {\it multivariate quantiles} for multivariate 
+random variables, including high-dimensional and infinite-dimensional random objects. 
+This  new quantiles are called {\it weighted projection quantiles} (WPQ) 
+and are extensions of 
+{\it  projection quantiles} we had developed earlier. They retain the strong theoretical 
+properties of projection quantiles, have similar algorithmic scalability and parallel 
+computational features, but they do not have the overcoverage issues that standard 
+projection quantiles possess. Thus, the WPQ provide an envelope around the data that 
+closely imitate the shape features of the data cloud. We establish theoretical results 
+for the WPQ, which are non-trivial. In particular, consistency of WPQ estimation method is 
+established. We also establish the consistency of the usage of WPQ for resampling-based 
+statistical inference, and in Bayesian inference using credible sets constructed from
+posterior distributions. We then develop a notion of {\it data-depth} based 
+on the WPQ, which quantifies how deep a point in space or an observation lies with 
+respect to the data geometry. We then use the WPQ to develop
+a new fast and accurate classification method in high or infinite dimensions, with 
+potentially multiple labels associated with each observation. Two of the main 
+features of the proposed method are that there are no assumptions made about the geometric 
+properties of the underlying data generating distribution, and that there are no 
+parametric or other restrictive assumptions made either for the data or the algorithm.
+The proposed 
+multivariate quantiles and algorithm for classification are applied to several real and 
+simulated data examples to illustrate their efficacy. The proposed methods are better 
+than several established classification techniques, either in terms of classification 
+accuracy or in terms of breadth of applicability, or both.
+
+\end{abstract}
+
+ \noindent{\bf Keywords:}
+ 
+ \section{Introduction}
+ 
+ \section{The WPQ algorithm}
+ 
+ \section{Theoretical properties of the WPQ}
+ 
+ \section{Data depth using the WPQ}
+ 
+ \section{Classification using data depth}
+ 
+ \section{Simulated examples}
+ 
+ \section{Real data example}
+
+
+\end{document}
+
+{\bf Need up to 6 keywords, 9 page paper, 5 page supplementary}. 
+
+
+
+
+; multivariate outlier 
+detection, and 
+
+quantile 
+regression with or without
+
+
+of a collection of random 
+sample points from a multivariate distribution, 
+The Chaudhuri’s spatial quantiles in $\mathbb{R}^p$ are defined as maps from the unit ball $\mathfrak{B}_p=\{\mathcal{X}:\|\mathcal{X}\|\leq 1\}$. Specifically, it has been shown that the $u-th$ quantile $Q(u)$ for a random variable $X$ is defined as the minimizer of the function $\Psi (u) = \mathbb{E}\left[\|X-q\|+u^T(X-q)\right]$. While this minimization provides an estimate for the exact spatial quantiles, there is no direct way of minimization of the objective function other than numerical iterative methods which are computation intensive for any large high-dimensional dataset. The alternative is to compute the projection quantiles by converting the high-dimensional problem to a one dimensional problem by taking a projection along a given vector u, and minimizing the alternate one dimensional function  $\Psi_U (u) = \mathbb{E}\left[\|X_U-q_U\|+\|u\|(X_U-q_U)\right]$. This minimization is direct and less computation intensive, however, this procedure loses information on the orthogonal direction and hence, biased. In this paper, we propose an alternative method of weighted projection quantile computation which retains the essential structure of the projection quantile while trying to regain a part of the information that is lost in the orthogonal direction. This is achieved by taking a weighted projection, where the weights are dependent on the relative amount of information lost in the orthogonal direction and a measure of the inaccuracy of the quantile estimation by the simple projection quantile. We show that by the weighting scheme we are able to get a much better estimate of the quantile functions for complex data clouds as compared to a normal projection quantile. We also, use this proposed method to define a measure of multi-dimensional data-depth. We use the proposed definition of multi-dimensional data depth to propose a new scheme for a multi-class classification algorithm. We also apply the proposed multi-class classification algorithm on some known classical classification datasets and show that we can achieve a reasonably good out-of-sample classification accuracy as compared to other standard approaches of classification.  
+
+
+% End of ltexpprt.tex
+%

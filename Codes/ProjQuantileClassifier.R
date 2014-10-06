@@ -1,3 +1,4 @@
+setwd("C:/Study/My projects/Quantiles/Codes")
 rm(list=ls());
 
 library(inline)
@@ -6,7 +7,7 @@ library(RcppArmadillo)
 library(RcppEigen)
 
 sourceCpp("DataDepth.cpp", verbose=TRUE, rebuild=FALSE);
-sourceCpp("ProjQuant.cpp", verbose=TRUE, rebuild=FALSE);
+sourceCpp("ProjQuantile.cpp", verbose=TRUE, rebuild=FALSE);
 
 d1<-read.table("FisherIris.csv", sep=",", header=TRUE, as.is=TRUE, fill=TRUE);
 
