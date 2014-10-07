@@ -1,12 +1,9 @@
 \documentclass{article}
-\usepackage{amssymb}
-\usepackage{amsmath}
+\usepackage{amssymb,amsmath,graphicx,color,multicol,mycommands}
 \usepackage{amsfonts}
-\usepackage{algorithm}
-\usepackage{algorithmic}
-\usepackage{pdfpages}
-\usepackage{hyperref}
-\usepackage{mycommands}
+\usepackage{algorithm,url}
+\usepackage[noend]{algpseudocode}
+\usepackage{epsfig,latexsym,graphicx}
 \parindent 0in
 
 \title{Weighted Projection Quantiles Algorithm}
@@ -15,7 +12,7 @@
 \begin{document}
 \maketitle
 
-\paragraph{Algorithm to calculate weighted projection quantile} along the vector $\bfu \in\mathbb{R}^p$, given a set of observations $\bfX_1,\bfX_2,...,\bfX_n$:
+\paragraph{Algorithm to calculate weighted projection quantile} along the vector $\bfu \in\mathcal B_p$, given a set of observations $\bfX_1,\bfX_2,...,\bfX_n$:
 
 \begin{enumerate}
 
@@ -35,7 +32,7 @@
 \item Compute global weights for the direction vector $\bfu$ by $k$-mean distance:
 
 \begin{itemize}
-\item Compute $k$-mean distance corresponding to $Q_{proj}(\bfu)$ using $d_k=\frac{1}{n}\sum_{i=1}^nd_i\mathbb{I}_{\{d_i<d_{(k)}\}}$, where $d_i$ is the euclidean distace of $\bfX_i$ from $Q_{proj}(\bfu)$ given by $\|\bfX_i-Q_{proj}(\bfu)\|$. $k$ is a tuning parameter.\\
+\item Compute $k$-mean distance corresponding to $Q_{proj}(\bfu)$ using $\bar d_k=\frac{1}{n}\sum_{i=1}^nd_i\mathbb{I}_{\{d_i<d_{(k)}\}}$, where $d_i$ is the euclidean distace of $\bfX_i$ from $Q_{proj}(\bfu)$ given by $\|\bfX_i-Q_{proj}(\bfu)\|$. $k$ is a tuning parameter.\\
 
 \item Compute the weights corresponding to $\bfu$:
 $$w_\bfu=\exp(-a.d_k)$$
@@ -62,7 +59,7 @@ $b,\epsilon$ being tuning parameters.
 
 \item Define $\tilde X_{\bfu i} = w_\bfu w_{2i}X_{\bfu i}$ for $i=1,...,n$.
 
-\item Find $\alpha=\frac{1+\|\bfu\|}{2}$ th quantile of $\tilde X_{\bfu 1},...,\tilde X_{\bfu n}$. Let it be $\tilde q_\bfu$.
+\item Find $\alpha=\frac{1+\|\bfu\|}{2}$-th quantile of $\tilde X_{\bfu 1},...,\tilde X_{\bfu n}$. Let it be $\tilde q_\bfu$.
 
 \item Find the weighted projection quantile as $\tilde Q_{proj}(\bfu)=\tilde q_\bfu\bfe_\bfu$.
 
@@ -72,30 +69,31 @@ $b,\epsilon$ being tuning parameters.
 
 \newpage
 
-\textbf{\textit{Algorithm for weighted projection quantile based data depth given data $\bfX_1,...,\bfX_n$ and a new point $\bfp$}}
+\paragraph{Definition} Given a random vector $\bfX\in \mathbb{R}^p$ that follows a multivariate distribution $F$, and a point $\bfp\in\mathbb{R}^p$, find $\alpha_\bfp$ such that $\|\bfp\|$ is the $\alpha_\bfp$-th quantile for the projection of $\bfX$ on $\bfp$, say $X_\bfp$. Then the \textbf{Projection Quantile Depth} (PQD) at $\bfp$ with respect to $F$ is defined as
+$$ D(\bfp, F) = \exp(-\alpha_\bfp) $$
 
-\begin{enumerate}
+\paragraph{} Given data $\bfX_1,\bfX_2,...,\bfX_n$, the PQD at a given $\bfp$ can be estimated by finding the two nearest points on either side of $\|\bfp\|$ along $\bfp$, say $\bfp_1, \bfp_2$, obtain their corresponding quantiles, say $\alpha_1, \alpha_2$ respectively, then estimate $\alpha_\bfp$ by a linear approximation:
+$$\hat\alpha_\bfp=\frac{(\alpha_1-\alpha_2)(\|\bfp\|-\|\bfp_1\|)}{\|\bfp_1\|-\|\bfp_2\|}+\alpha_1$$
+and plugging it in the above definition.
 
+\begin{algorithm}[h]
+\caption{Algorithm for PQD-based classification}
+\begin{algorithmic}[1]
+\Procedure{PQDClassifier}{training data $\bfX_i \in\mathbb{R}^{n_i\times p}$ with class labels $i$; $i=1,2,...,k$, new data $\bfx_{new}\in\mathbb{R}^p$}
+\State Set $i=1$.
+\State \emph{top}:
+\State Estimate from the sample the PQD of $\bfp$ with respect to the $i^{th}$ population, say $D(\bfx_{new},\bfX_i)$.
+\If {$i=k$} \textbf{Stop}
+	\Else \State Set $i\leftarrow i+1$, \textbf{goto} \emph{top}
+\EndIf
+\\
+\State Find $c$ that maximizes the PQD of $\bfx_{new}$ w.r.t. all possible classes:
+$$ D(\bfx_{new},\bfX_c) = \max\{D(\bfx_{new},\bfX_i): i=1,2,...,k\} $$
+\State Assign class $c$ to new data $\bfx_{new}$.
 
-\item Compute Projection Quantiles for all $n$ sample points along the direction of $\bfp$.
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
-\item Find two closest points along the grid and their corresponding quantile values, say $\alpha_1$ and $\alpha_2$ corresponding to $u_{p1}$ and $u_{p2}$.
-
-\item Approximate the quantile value for $p$ by interpolation $\alpha_p=\frac{(\alpha_1-\alpha_2)(\|p\|-\|u_1\|}{\|u_1\|-\|u_2\|}+\alpha_1$.
-
-\item Define \textbf{projection quantile depth} as $d_p=\exp(-\alpha_p)$.
-
-\end{enumerate}
-
-\textbf{\textit{Algorithm for weighted projection depth based classification scheme}}
-
-\begin{enumerate}
-
-\item Given data with $k$ classes and a new observation $p$ find the data depth for $p$ for each class $k$.
-
-\item Classify $p$ in class $j$ if $d_{pj} = min\{d_{pi}; i\in\{1,...,k\}\}$
-
-
-\end{enumerate}
-
+\paragraph{Note} One can define a weighted version of PQD by replacing $X_\bfp$ by their weighted version $\tilde X_\bfp$. A weighted classification scheme follows similarly.
 \end{document}
