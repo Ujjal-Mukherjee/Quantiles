@@ -7,7 +7,7 @@ library(Rcpp)
 library(RcppArmadillo)
 library(RcppEigen)
 
-sourceCpp("ProjQuant.cpp", verbose=TRUE, rebuild=FALSE);
+sourceCpp("ProjQuantile.cpp", verbose=TRUE, rebuild=FALSE);
 
 x1<-rnorm(n,0,10);
 x1<-x1+min(x1)*0.5;

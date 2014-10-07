@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{mycommands}
+\parindent 0in
+
+\title{Weighted Projection Quantiles Algorithm}
+
+
+\begin{document}
+\maketitle
+
+\paragraph{Algorithm to calculate weighted projection quantile} along the vector $\bfu \in\mathbb{R}^p$, given a set of observations $\bfX_1,\bfX_2,...,\bfX_n$:
+
+\begin{enumerate}
+
+\item \textbf{\textit{Compute $Q_{proj}(\bfu)$, projection quantile along $\bfu$}}
+
+\begin{itemize}
+\item Project each $\bfX_i$ along $\bfu$ to obtain $X_{\bfu i}=\frac{\langle\bfX_i,\bfu\rangle}{\|\bfu\|}$, for $i=1,2,...,n$.
+\item Find $\alpha=\frac{1+\|\bfu\|}{2}$-th quantile of $X_{\bfu 1},...,X_{\bfu n}$, say $q_\bfu$..
+\item $Q_{proj}(\bfu)=q_\bfu\bfe_\bfu$, $\bfe_\bfu=\bfu/\|\bfu\|$ being the unit vector along $\bfu$.
+
+\end{itemize}
+
+\item \textit{\textbf{Compute Weights corresponding to this projection quantile $Q_{proj}(\bfu)$}}
+
+\begin{itemize}
+
+\item Compute global weights for the direction vector $\bfu$ by $k$-mean distance:
+
+\begin{itemize}
+\item Compute $k$-mean distance corresponding to $Q_{proj}(\bfu)$ using $d_k=\frac{1}{n}\sum_{i=1}^nd_i\mathbb{I}_{\{d_i<d_{(k)}\}}$, where $d_i$ is the euclidean distace of $\bfX_i$ from $Q_{proj}(\bfu)$ given by $\|\bfX_i-Q_{proj}(\bfu)\|$. $k$ is a tuning parameter.\\
+
+\item Compute the weights corresponding to $\bfu$:
+$$w_\bfu=\exp(-a.d_k)$$
+where $a$ is a tuning parameter. 
+\end{itemize}
+
+\item Compute weights for each sample point $\bfX_i; i=1,2,...,n$:
+
+\begin{itemize}
+\item Compute the orthogonal Norms by $\|\bfX_{\bfu\perp i}\|=\|\bfX_i-X_{\bfu i}\bfe_\bfu\|$.
+
+\item Compute weight of $i^{th}$ sample:
+$$w_{2i} = \begin{cases}
+\exp\left[-b\frac{\|\bfX_{\bfu\perp i}\|}{\|\bfX_i\|}\right] & \mbox{ if}\|\bfX_i\|\leq\epsilon\\
+0 & \mbox{ otherwise}
+\end{cases} $$
+$b,\epsilon$ being tuning parameters.
+\end{itemize}
+\end{itemize} 
+
+\item \textit{\textbf{Compute the weighted projection quantile}}
+
+\begin{itemize}
+
+\item Define $\tilde X_{\bfu i} = w_\bfu w_{2i}X_{\bfu i}$ for $i=1,...,n$.
+
+\item Find $\alpha=\frac{1+\|\bfu\|}{2}$ th quantile of $\tilde X_{\bfu 1},...,\tilde X_{\bfu n}$. Let it be $\tilde q_\bfu$.
+
+\item Find the weighted projection quantile as $\tilde Q_{proj}(\bfu)=\tilde q_\bfu\bfe_\bfu$.
+
+\end{itemize}
+
+\end{enumerate}
+
+\newpage
+
+\textbf{\textit{Algorithm for weighted projection quantile based data depth given data $\bfX_1,...,\bfX_n$ and a new point $\bfp$}}
+
+\begin{enumerate}
+
+
+\item Compute Projection Quantiles for all $n$ sample points along the direction of $\bfp$.
+
+\item Find two closest points along the grid and their corresponding quantile values, say $\alpha_1$ and $\alpha_2$ corresponding to $u_{p1}$ and $u_{p2}$.
+
+\item Approximate the quantile value for $p$ by interpolation $\alpha_p=\frac{(\alpha_1-\alpha_2)(\|p\|-\|u_1\|}{\|u_1\|-\|u_2\|}+\alpha_1$.
+
+\item Define \textbf{projection quantile depth} as $d_p=\exp(-\alpha_p)$.
+
+\end{enumerate}
+
+\textbf{\textit{Algorithm for weighted projection depth based classification scheme}}
+
+\begin{enumerate}
+
+\item Given data with $k$ classes and a new observation $p$ find the data depth for $p$ for each class $k$.
+
+\item Classify $p$ in class $j$ if $d_{pj} = min\{d_{pi}; i\in\{1,...,k\}\}$
+
+
+\end{enumerate}
+
+\end{document}
