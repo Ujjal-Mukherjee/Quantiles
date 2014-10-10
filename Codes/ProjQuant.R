@@ -15,7 +15,7 @@ x2<-rnorm(n,0,6);
 
 th<-pi/4;
 
-r=function(th)return(cbind(c(cos(th),sin(th)),c(-sin(th),cos(th))));
+r=function(th) return(cbind(c(cos(th),sin(th)),c(-sin(th),cos(th))));
 
 dat<-cbind(x1,x2);
 

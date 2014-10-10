@@ -45,28 +45,18 @@ where $a$ is a tuning parameter.
 \item Compute the orthogonal Norms by $\|\bfX_{\bfu\perp i}\|=\|\bfX_i-X_{\bfu i}\bfe_\bfu\|$.
 
 \item Compute weight of $i^{th}$ sample:
-$$w_{2i} = \begin{cases}
-\exp\left[-b\frac{\|\bfX_{\bfu\perp i}\|}{\|\bfX_i\|}\right] & \mbox{ if}\|\bfX_i\|\leq\epsilon\\
-0 & \mbox{ otherwise}
-\end{cases} $$
+$$w_{2i} = \exp\left[-b\frac{\|\bfX_{\bfu\perp i}\|}{\|\bfX_i\|}\right]\mathbb{I}_{\{\|\bfX_{\bfu\perp i}\|\leq\epsilon\}}$$
 $b,\epsilon$ being tuning parameters.
 \end{itemize}
 \end{itemize} 
 
 \item \textit{\textbf{Compute the weighted projection quantile}}
-
 \begin{itemize}
-
-\item Define $\tilde X_{\bfu i} = w_\bfu w_{2i}X_{\bfu i}$ for $i=1,...,n$.
-
-\item Find $\alpha=\frac{1+\|\bfu\|}{2}$-th quantile of $\tilde X_{\bfu 1},...,\tilde X_{\bfu n}$. Let it be $\tilde q_\bfu$.
-
+\item Suppose there are $m$ observations with non-zero weights $w_{2i}$, with indices $i_1,i_2,...,i_m$. Define $\tilde X_{\bfu i_j} = w_\bfu w_{2i_j}X_{\bfu i_j}$.
+\item Find $\alpha=\frac{1+\|\bfu\|}{2}$-th quantile of $\tilde X_{\bfu i_1},...,\tilde X_{\bfu i_m}$. Let it be $\tilde q_\bfu$.
 \item Find the weighted projection quantile as $\tilde Q_{proj}(\bfu)=\tilde q_\bfu\bfe_\bfu$.
-
 \end{itemize}
-
 \end{enumerate}
-
 \newpage
 
 \paragraph{Definition} Given a random vector $\bfX\in \mathbb{R}^p$ that follows a multivariate distribution $F$, and a point $\bfp\in\mathbb{R}^p$, find $\alpha_\bfp$ such that $\|\bfp\|$ is the $\alpha_\bfp$-th quantile for the projection of $\bfX$ on $\bfp$, say $X_\bfp$. Then the \textbf{Projection Quantile Depth} (PQD) at $\bfp$ with respect to $F$ is defined as
