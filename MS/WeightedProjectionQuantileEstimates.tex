@@ -86,4 +86,14 @@ $$ D(\bfx_{new},\bfX_c) = \max\{D(\bfx_{new},\bfX_i): i=1,2,...,k\} $$
 \end{algorithm}
 
 \paragraph{Note} One can define a weighted version of PQD by replacing $X_\bfp$ by their weighted version $\tilde X_\bfp$. A weighted classification scheme follows similarly.
+
+\section*{Modifications}
+\paragraph{1. $w_{2i}=\mathbb{I}_{\{\|X_{\bfu\perp i}\|\leq\epsilon\}}$}
+Wouldn't work. The objective function here is
+\begin{eqnarray*}
+\tilde\Psi_\bfu(q) &=& \mathbb{E}\left[\lbrace |X_\bfu-q|+\alpha(X_\bfu-q)\rbrace\mathbb{I}_{\{\|\bfX_{\bfu\perp}\|\leq\epsilon\}}\right]\\
+&=&\mathbb{E}\left[|X_\bfu-q|+\alpha(X_\bfu-q)\right]P\left[\|\bfX_{\bfu\perp}\|\leq\epsilon\right]\\
+&=&\Psi_\bfu(q)P\left[\|\bfX_{\bfu\perp}\|\leq\epsilon\right]
+\end{eqnarray*}
+because $Cov(X_\bfu\bfe_\bfu,\bfX_{\bfu\perp})=\bf{0}$. Hence it gives out PQ as the minimizer.
 \end{document}
