@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  14 OCT 2014 15:30
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  16 OCT 2014 17:52
 entering extended mode
 **WeightedProjectionQuantileEstimates.tex
 ("C:\Study\My projects\Quantiles\MS\WeightedProjectionQuantileEstimates.tex"
@@ -314,8 +314,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--36
 [1
 
 {C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-("C:\Study\My projects\Quantiles\MS\WeightedProjectionQuantileEstimates.aux") )
- 
+[3] ("C:\Study\My projects\Quantiles\MS\WeightedProjectionQuantileEstimates.aux
+") ) 
 Here is how much of TeX's memory you used:
  3066 strings out of 493921
  38668 string characters out of 3148084
@@ -323,30 +323,30 @@ Here is how much of TeX's memory you used:
  6309 multiletter control sequences out of 15000+200000
  13457 words of font info for 55 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,10n,26p,427b,289s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Study/
-LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Study/LaTeX/MikT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmbx5.pfb><C:/Study/LaTeX/MikTeX 2.9/font
-s/type1/public/amsfonts/cm/cmbx7.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmbxti10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmcsc10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/c
-mex10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-<C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Study/L
-aTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Study/LaTeX/MikTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmr12.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmr17.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmr5.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-<C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Study/La
-TeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Study/LaTeX/MikTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmsy7.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmti10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts
-/symbols/msbm10.pfb>
-Output written on WeightedProjectionQuantileEstimates.pdf (2 pages, 218679 byte
+ 27i,13n,26p,427b,289s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/St
+udy/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Study/LaTeX/
+MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx5.pfb><C:/Study/LaTeX/MikTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmbxti10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmcsc10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmex10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.
+pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Stu
+dy/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Study/LaTeX/Mi
+kTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Study/LaTeX/MikTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr17.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmr5.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.
+pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Stud
+y/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Study/LaTeX/Mi
+kTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Study/LaTeX/MikTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmti10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsf
+onts/symbols/msbm10.pfb>
+Output written on WeightedProjectionQuantileEstimates.pdf (3 pages, 233151 byte
 s).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
+ 96 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

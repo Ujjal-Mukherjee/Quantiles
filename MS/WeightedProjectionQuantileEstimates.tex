@@ -96,4 +96,33 @@ Wouldn't work. The objective function here is
 &=&\Psi_\bfu(q)P\left[\|\bfX_{\bfu\perp}\|\leq\epsilon\right]
 \end{eqnarray*}
 because $Cov(X_\bfu\bfe_\bfu,\bfX_{\bfu\perp})=\bf{0}$. Hence it gives out PQ as the minimizer.
+
+\section*{New notion of data depth}We define a data depth based on projection quantiles (which, of course, can be extended to the weighted versions), on the lines of Zuo's Projection Depth [ref?].
+\paragraph{Definition}
+Given a random vector $X\in \mathbb{R}^p$ that follows a multivariate distribution $F$, and a point $x\in\mathbb{R}^p$, define an outlyingness function
+$$ O(x,F) = \sup_{\|u\|=1} \left\vert F_u(x_u)-\frac{1}{2}\right\vert $$
+where $F_\bfu$ is the distribution function of $X_\bfu$, and $x_u=\langle x,u\rangle/\|u\| $. Then we define the \textbf{Projection Quantile Depth} at $x$ with respect to $F$ as
+$$ PQD(x,F) = \frac{1}{1+O(x,F)} $$
+
+\paragraph{}We now follow the order in Zuo's paper to obtain the properties of the PQD.
+
+\paragraph{(P1) \textit{Affine invariance}} Say $G$ is the cdf of $AX+b$. Then we have $O(Ax+b,G)=O(x,F)$ because for all $u\in\mathbb{R}^p$ we have
+$$ F(x)= G(Ax+b) \Rightarrow F_u(x_u) = G_{Au+b}\left((Ax+b)_{Au+b}\right)$$
+where subscripting denotes projection.
+
+\paragraph{(P2) \textit{Quasi-concavity}} for $0<\lambda<1, z=\lambda x+(1-\lambda)y$,
+\begin{eqnarray*}
+F_u(z_u) &=& F_\bfu (\lambda x_u+(1-\lambda)y_u)\\
+\Rightarrow \left\vert F_u(z_u)-\frac{1}{2}\right\vert &\leq &
+\begin{cases}
+\left\vert \max\{F_u(x_u),F_u(y_u)\}-\frac{1}{2}\right\vert & \mbox{if } F_u(z_u)<1/2\\
+\left\vert \min\{F_u(x_u),F_u(y_u)\}-\frac{1}{2}\right\vert & \mbox{otherwise}
+\end{cases}\\
+&\leq & \max\left\lbrace \left\vert F_u(x_u)-\frac{1}{2}\right\vert, \left\vert F_u(y_u)-\frac{1}{2}\right\vert \right\rbrace
+\end{eqnarray*}
+and we finally get $PQD(z,F)\geq\max\{PQD(x,F),PQD(y,F)\}$.
+
+\paragraph{(P3) \textit{Vanishing at infinity}}For $\|x\|\rightarrow\infty$ we have $F_u(x_u)\rightarrow 1$ hence $PQD(x,F)\rightarrow 2/3$. So we can define $PQD^*(x,F)=PQD(x,F)-2/3$ to obtain P3.
+
+\paragraph{(P4) \textit{Maximized at center of symmetric $F$}} Halfspace symmetry of $F$ w.r.t. center $\theta$ implies (halfspace) symmetry of $F_u$ around $\theta_u$ for any $u\in\mathbb{R}^p$, so that $F_u(\theta_u)=1/2$ and subsequently $PQD$ achieves its max value 1 at $\theta$.
 \end{document}
