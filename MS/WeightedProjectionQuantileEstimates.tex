@@ -125,4 +125,22 @@ and we finally get $PQD(z,F)\geq\max\{PQD(x,F),PQD(y,F)\}$.
 \paragraph{(P3) \textit{Vanishing at infinity}}For $\|x\|\rightarrow\infty$ we have $F_u(x_u)\rightarrow 1$ hence $PQD(x,F)\rightarrow 2/3$. So we can define $PQD^*(x,F)=PQD(x,F)-2/3$ to obtain P3.
 
 \paragraph{(P4) \textit{Maximized at center of symmetric $F$}} Halfspace symmetry of $F$ w.r.t. center $\theta$ implies (halfspace) symmetry of $F_u$ around $\theta_u$ for any $u\in\mathbb{R}^p$, so that $F_u(\theta_u)=1/2$ and subsequently $PQD$ achieves its max value 1 at $\theta$.
+
+\paragraph{Example 1}For $X\sim \mathcal{N}_2((0,0)',I_2)$ we have $X_u\sim N(0,1)$ for any $u\in\mathbb{R}^p: \|u\|=1$. Due to the symmetry of the distribution function maximizing $|F_u(x_u)-1/2|$ is equivalent to maximizing $F_u(x_u)=\Phi(x_u) = \Phi(\langle x,u\rangle)$.
+
+\paragraph{} Converting $u$ to polar coordinates we can maximize over the angle $\theta$ that $u$ makes with the X-axis, and can easily find that the above function maximizes at $\theta = \tan^{-1}(x_2/x_1)$, which is the direction for $x$ itself. Thus for given $x$ the sup is obtained at $u=x$, and we have
+\begin{equation}
+PQD(x,F) = \frac{1}{1+\Phi(\|x\|)-1/2} = \frac{2}{1+2\Phi(\|x\|)}
+\end{equation}
+
+Fig. 1 shows a comparison of PQD with Zuo's PD for standard bivariate normal.
+\begin{figure}[t]
+	\centering
+		\includegraphics[height=4cm]{pd_vs_pqd_bvn3d.png}\\
+	\label{fig:fig1}
+	\caption{Projection Depth (left) and Projection Quantile Depth (right) for $\mathcal{N}_2((0,0)',I_2)$}
+\end{figure}
+\paragraph{Note} In place of standard bivariate normal, one can use any circularly symmetric $F$, i.e. a distribution that has the same marginal distribution $F_0$ along all one-dimensional projections to come up with an exact formula for $PQD(x,F)$. In that general scenario, $\Phi(.)$ will be replaced by $F_0(.)$ in (1).
+
+
 \end{document}
