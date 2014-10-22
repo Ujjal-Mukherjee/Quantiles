@@ -87,15 +87,15 @@ $$ D(\bfx_{new},\bfX_c) = \max\{D(\bfx_{new},\bfX_i): i=1,2,...,k\} $$
 
 \paragraph{Note} One can define a weighted version of PQD by replacing $X_\bfp$ by their weighted version $\tilde X_\bfp$. A weighted classification scheme follows similarly.
 
-\section*{Modifications}
-\paragraph{1. $w_{2i}=\mathbb{I}_{\{\|X_{\bfu\perp i}\|\leq\epsilon\}}$}
-Wouldn't work. The objective function here is
-\begin{eqnarray*}
-\tilde\Psi_\bfu(q) &=& \mathbb{E}\left[\lbrace |X_\bfu-q|+\alpha(X_\bfu-q)\rbrace\mathbb{I}_{\{\|\bfX_{\bfu\perp}\|\leq\epsilon\}}\right]\\
-&=&\mathbb{E}\left[|X_\bfu-q|+\alpha(X_\bfu-q)\right]P\left[\|\bfX_{\bfu\perp}\|\leq\epsilon\right]\\
-&=&\Psi_\bfu(q)P\left[\|\bfX_{\bfu\perp}\|\leq\epsilon\right]
-\end{eqnarray*}
-because $Cov(X_\bfu\bfe_\bfu,\bfX_{\bfu\perp})=\bf{0}$. Hence it gives out PQ as the minimizer.
+%\section*{Modifications}
+%\paragraph{1. $w_{2i}=\mathbb{I}_{\{\|X_{\bfu\perp i}\|\leq\epsilon\}}$}
+%Wouldn't work. The objective function here is
+%\begin{eqnarray*}
+%\tilde\Psi_\bfu(q) &=& \mathbb{E}\left[\lbrace |X_\bfu-q|+\alpha(X_\bfu-q)\rbrace\mathbb{I}_{\{\|\bfX_{\bfu\perp}\|\leq\epsilon\}}\right]\\
+%&=&\mathbb{E}\left[|X_\bfu-q|+\alpha(X_\bfu-q)\right]P\left[\|\bfX_{\bfu\perp}\|\leq\epsilon\right]\\
+%&=&\Psi_\bfu(q)P\left[\|\bfX_{\bfu\perp}\|\leq\epsilon\right]
+%\end{eqnarray*}
+%because $Cov(X_\bfu\bfe_\bfu,\bfX_{\bfu\perp})=\bf{0}$. Hence it gives out PQ as the minimizer.
 
 \section*{New notion of data depth}We define a data depth based on projection quantiles (which, of course, can be extended to the weighted versions), on the lines of Zuo's Projection Depth [ref?].
 \paragraph{Definition}
@@ -134,12 +134,12 @@ PQD(x,F) = \frac{1}{1+\Phi(\|x\|)-1/2} = \frac{2}{1+2\Phi(\|x\|)}
 \end{equation}
 
 Fig. 1 shows a comparison of PQD with Zuo's PD for standard bivariate normal.
-\begin{figure}[t]
-	\centering
-		\includegraphics[height=4cm]{pd_vs_pqd_bvn3d.png}\\
-	\label{fig:fig1}
-	\caption{Projection Depth (left) and Projection Quantile Depth (right) for $\mathcal{N}_2((0,0)',I_2)$}
-\end{figure}
+%\begin{figure}[t]
+%	\centering
+%		\includegraphics[height=4cm]{pd_vs_pqd_bvn3d.png}\\
+%	\label{fig:fig1}
+%	\caption{Projection Depth (left) and Projection Quantile Depth (right) for $\mathcal{N}_2((0,0)',I_2)$}
+%\end{figure}
 \paragraph{Note} In place of standard bivariate normal, one can use any circularly symmetric $F$, i.e. a distribution that has the same marginal distribution $F_0$ along all one-dimensional projections to come up with an exact formula for $PQD(x,F)$. In that general scenario, $\Phi(.)$ will be replaced by $F_0(.)$ in (1).
 
 

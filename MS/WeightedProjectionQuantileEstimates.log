@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  17 OCT 2014 12:03
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  21 OCT 2014 11:16
 entering extended mode
 **WeightedProjectionQuantileEstimates.tex
 ("C:\Study\My projects\Quantiles\MS\WeightedProjectionQuantileEstimates.tex"
@@ -314,20 +314,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--36
 [1
 
 {C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-[3] <pd_vs_pqd_bvn3d.png, id=32, 567.62062pt x 255.20343pt>
-File: pd_vs_pqd_bvn3d.png Graphic file (type png)
-
-<use pd_vs_pqd_bvn3d.png>
-Package pdftex.def Info: pd_vs_pqd_bvn3d.png used on input line 139.
-(pdftex.def)             Requested size: 253.14035pt x 113.81102pt.
- [4 <C:/Study/My projects/Quantiles/MS/pd_vs_pqd_bvn3d.png>]
+[3] [4]
 ("C:\Study\My projects\Quantiles\MS\WeightedProjectionQuantileEstimates.aux") )
  
 Here is how much of TeX's memory you used:
- 3075 strings out of 493921
- 38817 string characters out of 3148084
- 97749 words of memory out of 3000000
- 6316 multiletter control sequences out of 15000+200000
+ 3066 strings out of 493921
+ 38668 string characters out of 3148084
+ 97742 words of memory out of 3000000
+ 6309 multiletter control sequences out of 15000+200000
  13457 words of font info for 55 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,13n,26p,427b,289s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -350,10 +344,10 @@ TeX/MikTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Study/LaTeX/MikTeX
 type1/public/amsfonts/cm/cmsy7.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmti10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfonts
 /symbols/msbm10.pfb>
-Output written on WeightedProjectionQuantileEstimates.pdf (4 pages, 249057 byte
+Output written on WeightedProjectionQuantileEstimates.pdf (4 pages, 233401 byte
 s).
 PDF statistics:
- 102 PDF objects out of 1000 (max. 8388607)
+ 99 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

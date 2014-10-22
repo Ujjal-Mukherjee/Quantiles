@@ -1,5 +1,6 @@
 rm(list=ls())
 set.seed(10092014)
+setwd("C:/Study/My projects/Quantiles/Codes/SBM")
 
 library(inline)
 library(Rcpp)
@@ -80,4 +81,38 @@ PwPplot(X1, isEllipse = T, sig=sig, t1="a.",t2="b.")
 PwPplot(X2, t1="c.",t2="d.")
 PwPplot(X3, t1="e.",t2="f.")
 PwPplot(X4, t1="g.",t2="h.")
+
+## Compare bivariate normal and mixture normal plot... AIStats paper
+X1.pq = ProjQuant(X1, c(0,.9), 1000)
+X1.wpq = WtProjQuantProfile(X1, c(0,.9), 1000, 100, 0.5, 0.1, 0.9)
+
+plot(X1, pch=19, cex=.1, col=adjustcolor("black", alpha.f=.3),
+     main="Bivariate Normal", xlab="X1", ylab="X2")
+lines(X1.pq[,1], X1.pq[,2], lwd=2, col="blue")
+lines(X1.wpq[,1], X1.wpq[,2], lwd=2, col="red")
+lines(ellipse(sig, level=.9), lwd=2)
+
+legend("bottomright", c("Normal ellipsoid","PQ","DCW"),
+       lty=1, lwd=2, cex=.7,
+       col=c("black","blue","red"))
+
+# BVN mixture
+X41 = my.mvrnorm(5e3, mu=c(2,0), Sigma=sig)
+X42 = my.mvrnorm(2e3, mu=c(-1,0), Sigma=.5*sig2)
+X4 = rbind(X41,X42)
+
+X4.pq = ProjQuant(X4, c(0,.9), 1000)
+X4.wpq = WtProjQuantProfile(X4, c(0,.9), 1000, 100, 0.5, 0.1, 0.9)
+
+plot(X4, pch=19, cex=.1, col=adjustcolor("black", alpha.f=.3),
+     main="Bivariate Normal mixture", xlab="X1", ylab="X2")
+# PQ contours
+
+lines(ellipse(cov(X4), centre=colMeans(X4), level=.9), lwd=2)
+lines(X4.pq[,1], X4.pq[,2], lwd=2, col="blue")
+lines(X4.wpq[,1], X4.wpq[,2], lwd=2, col="red")
+
+legend("bottomright", c("Normal ellipsoid","PQ","DCW"),
+       lty=1, lwd=2, cex=.7,
+       col=c("black","blue","red"))
 
