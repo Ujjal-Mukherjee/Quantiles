@@ -1,0 +1,301 @@
+\bibliographystyle{elsarticle-harv}
+
+%\bibliographystyle{biometrika}
+%\bibliography{../../reference7-2009}
+\begin{thebibliography}{99}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[Bose and Chatterjee (2003)]{ref:BoseC03}
+{\sc Bose, A. and Chatterjee, S.} (2003)
+Generalized bootstrap for  estimators of minimizers of convex
+functionals, {\it   J. of Statist. Planning and
+Inference},  {\bf 117}, 225-239.
+
+\bibitem[Brown  (1983)]{ref:Brown83}
+{\sc Brown, B. M.} (1983)
+ Statistical uses of the spatial median,
+{\it Journal of the Royal Statistical Society. Series B (Methodological)}, {\bf 45}, No. 1 (1983), 25--30.
+
+\bibitem[Brown and Hettmansperger (1987)]{ref:BrownHettmansperger87}
+{\sc Brown, B. M. and Hettmansperger, T. P.} (1987)
+ Affine invariant rank methods in the bivariate location model,
+{\it Journal of the Royal Statistical Society. Series B (Methodological)}, {\bf 49}, No. 3 (1987), 301--310.
+
+\bibitem[Brown and Hettmansperger (1989)]{ref:BrownHettmansperger89}
+{\sc Brown, B. M. and Hettmansperger, T. P.} (1989)
+ An affine invariant bivariate version of the sign test,
+{\it Journal of the Royal Statistical Society. Series B (Methodological)}, {\bf 51}, No. 1 (1989), 117--125.
+
+
+
+
+\bibitem[Chakraborty and Chaudhuri (1996)]{ref:ChakrabortyChaudhuri96}
+{\sc Chakraborty, B., and P. Chaudhuri}
+On a transformation and re-transformation technique for constructing an affine equivariant multivariate median.
+{\it Proc. Amer. Math. Soc.} {\bf 124} (1996), no. 8, 2539--2547.
+
+
+
+\bibitem[Chakraborty and Chaudhuri (1998a)]{ref:ChakrabortyChaudhuri98a}
+{\sc Chakraborty, B., and P. Chaudhuri}
+ On an adaptive transformation-retransformation estimate of multivariate location.
+{\it  J. R. Stat. Soc. Ser. B Stat. Methodol.} {\bf 60} (1998a), no. 1, 145--157.
+
+
+\bibitem[Chakraborty and Chaudhuri (1998b)]{ref:ChakrabortyChaudhuri98b}
+{\sc Chakraborty, B., and P. Chaudhuri}
+ On multivariate rank regression.
+   {\it  $L\sb 1$-statistical procedures and related topics (Neuch\^{a}tel, 1997)}, 399--414,
+ IMS Lecture Notes Monogr. Ser., {\bf 31}, Inst. Math. Statist., Hayward, CA, 1997.
+
+
+\bibitem[Chakraborty and Chaudhuri (1999a)]{ref:ChakrabortyChaudhuri99a}
+{\sc Chakraborty, B., and P. Chaudhuri}
+ On affine invariant sign and rank tests in one- and two-sample multivariate problems.
+   {\it   Multivariate analysis, design of experiments, and survey sampling},
+ 499--522, Statist. Textbooks Monogr., {\bf 159}, Dekker, New York, 1999.
+
+
+\bibitem[Chakraborty and Chaudhuri (1999b)]{ref:ChakrabortyChaudhuri99b}
+{\sc Chakraborty, B., and P. Chaudhuri}
+A note on the robustness of multivariate medians.
+{\it Statist. Probab. Lett.} {\bf 45} (1999), no. 3, 269--276.
+
+
+
+\bibitem[{Chakraborty(2001)}]{ref:chakraborty-2001}
+\textsc{Chakraborty, B.} (2001).
+\newblock On affine equivariant multivariate quantiles.
+\newblock \textit{Ann. Inst. Statistical Math.} \textbf{53(2)}, 380--403.
+
+\bibitem[{Chakraborty et~al.(1998)Chakraborty, Chaudhuri \&
+  Oja}]{ref:chakraborty-chaudhuri-oja-1998}
+\textsc{Chakraborty, B.}, \textsc{Chaudhuri, P.} \& \textsc{Oja, H.} (1998).
+\newblock Operating transformation retransformation on spatial median and angle
+  test.
+\newblock \textit{Statist. Sinica} \textbf{8}, 767--784.
+
+
+\bibitem[Chan (2004)]{ref:Chan04}
+{\sc Chan, T. M.} (2004)
+An optimal randomized algorithm for maximum Tukey depth, 
+{\it Proc. 15th ACM-SIAM Symposium on Discrete Algorithms}, (2004), 423--429.
+
+\bibitem[{Chaudhuri(1996)}]{ref:chaudhuri-1996}
+\textsc{Chaudhuri, P.} (1996).
+\newblock On a {G}eometric {N}otion of {Q}uantiles for {M}ultivariate {D}ata.
+\newblock \textit{Journal of American Statistical Association}
+  \textbf{91(434)}, 862--872.
+
+
+\bibitem[{Eisen et~al.(1998)Eisen, Spellman, Brown \& Potstein}]{ref:eisen-1998}
+\textsc{Eisen, M.B.}, \textsc{Spellman, P.T.}, \textsc{Brown, P.O.} \& \textsc{Botstein, D.} (1998).
+\newblock Cluster analysis and display of genome-wide expression patterns.
+\newblock \textit{Proc Natl Acad Sci} \textbf{U S A 1998, 95} 14863-14868.
+
+\bibitem[Haberman (1989)]{ref:Haberman89}
+{\sc Haberman, S. J.} (1989) Concavity and estimation,
+{\it Ann. Statist.}, {\bf 17}, 1631-1661.
+
+\bibitem[Haldane (1948)]{ref:Haldane48}
+{\sc Haldane, J. B. S.}
+Note on the median of a multivariate distribution.
+{\it Biometrika}, {\bf 35} (1948), 414--415.
+
+\bibitem[Hastie, Tibshirani and Friedman (2009)]{ref:HTF09}
+{\sc  Hastie, T.; R. Tibshirani and J. Friedman}
+{\it The Elements of Statistical Learning: Data Mining, Inference, and Prediction.}
+(Second Edition), (2009), Springer.
+
+\bibitem[Hettmansperger, Nyblom and Oja (1994)]{ref:HettmanspergerNyblomOja94}
+{\sc Hettmansperger, T. P., Nyblom, J. and H. Oja} (1994)
+Affine invariant multivariate one-sample sign tests,
+{\it Journal of the Royal Statistical Society. Series B (Methodological)}, {\bf 56}, No. 1 (1994), 221--234.
+
+\bibitem[Huber (1985)]{ref:Huber85}
+{\sc Huber, Peter J.} Projection pursuit. With discussion.  {\it Ann. Statist.}  {\bf 13 } (1985),  no. 2, 435--525.
+
+\bibitem[Koenker and Bassett (1978)]{ref:KoenkerBassett78}
+{\sc Koenker, R. and  Bassett, Jr. G.} (1978),
+ Regression quantiles,
+{\it Econometrica}, {\bf 46}, No. 1 33--50.
+
+\bibitem[Li et.~al.(2006)]{ref:li-etal-2006}
+Li, X.,{\it et.~al}(2006). \newblock{Discovery of time-delayed gene
+regulatory networks based on temporal gene expression profiling}
+\newblock{BMC Bioinformatics} 7:26.
+
+
+
+\bibitem[Liu (1990)]{ref:Liu90}
+{\sc Liu, R. Y.} (1990)
+ On a notion of data depth based on random simplices,
+ {\it  Ann. Statist.}, {\bf 18}, 405--414.
+
+\bibitem[Liu, Parelius and Singh (1999)]{ref:LiuPareliusSingh99}
+{\sc Liu, R. Y., Parelius, J. M. and Singh, K.} (1999)
+ Multivariate analysis by data depth: Descriptive statistics, graphics and inference (with discussion),
+ {\it Ann. Statist.}, {\bf 27}, 783--858.
+
+
+\bibitem[Liu and Singh (1993)]{ref:LiuSingh93}
+{\sc Liu, R. Y. and Singh, K.} (1993)
+ A quality index based on data depth and multivariate rank tests,
+ {\it  J. Amer. Statist. Assoc.}, {\bf 88}, 252--260.
+
+
+
+\bibitem[{Mukhopadhyay \& Chatterjee(2007)}]{ref:mukhopadhyay-chatterjee-2007}
+\textsc{Mukhopadhyay, N.} \& \textsc{Chatterjee, S.~B.} (2007).
+\newblock Causality and pathway search in microarray time series experiment.
+\newblock \textit{Bioinformatics} \textbf{23}, 442--449.
+
+\bibitem[Niemiro (1992)]{ref:Niemiro92}
+{\sc Niemiro, W.}   (1992). Asymptotics for M-estimators
+defined by convex minimization. {\it Ann. Statist.}, {\bf  20},
+1514--1533.
+
+\bibitem[Owen (1988)]{ref:Owen88}
+{\sc Owen, Art B.} Empirical likelihood ratio confidence intervals for a single functional.
+{\it Biometrika} {\bf  75}  (1988),  no. 2, 237--249.
+
+\bibitem[Small (1990)]{ref:Small90}
+{\sc Small, C. G.} (1990)
+A survey of multidimensional medians,
+{\it  International Statistical Review}, {\bf 58}, 263--277.
+
+\bibitem[{Spellman et~al.(1998)Spellman, Sherlock, Zhang, Iyer, Anders, Eisen,
+  Brown, Botstein \& Futcher}]{ref:spellman-1998}
+\textsc{Spellman, P.}, \textsc{Sherlock, G.}, \textsc{Zhang, M.}, \textsc{Iyer,
+  V.}, \textsc{Anders, K.}, \textsc{Eisen, M.}, \textsc{Brown, P.},
+  \textsc{Botstein, D.} \& \textsc{Futcher, B.} (1998).
+\newblock Comprehensive identification of cell cycle regulated genes of the
+  yeast {S}accharomyces cerevisiae by microarray hybridization.
+\newblock \textit{Mol. Biol. Cell} \textbf{9}, 3273--3297.
+
+\bibitem[Tukey (1975)]{ref:Tukey75}
+{\sc Tukey, J. W.} (1975)
+ Mathematics and picturing data,
+  In {\it Proceedings of the International Congress on Mathematics (R. D. James, ed.)}, {\bf 2}, 523--531,
+   Canadian Math. Congress.
+
+\bibitem[Vardi and Zhang (2000)]{ref:VardiZhang00}
+{\sc Vardi, Y. and Zhang, C.-H.} (2000)
+ The multivariate $L_{1}$-median and associated data depth,
+{\it Proc. Natl. Acad. Sciences}, {\bf 97},  no. 4  1423--1426.
+
+
+\bibitem[{Whitfield et~al.(2002)Whitfield, Sherlock, Saldanha, Murray, Ball,
+  Alexander, Matese, Perou, Hurt, Brown \&
+  Botstein}]{ref:whitfield-botstein-2002}
+\textsc{Whitfield, M.~L.}, \textsc{Sherlock, G.}, \textsc{Saldanha, A.},
+  \textsc{Murray, J.}, \textsc{Ball, C.~A.}, \textsc{Alexander, K.},
+  \textsc{Matese, J.}, \textsc{Perou, C.~M.}, \textsc{Hurt, M.}, \textsc{Brown,
+  P.} \& \textsc{Botstein, D.} (2002).
+\newblock Identification of {G}enes {P}eriodically {E}xpressed in the {H}uman
+  {C}ell {C}ycle and {T}heir {E}xpression in {T}umors.
+\newblock \textit{Molecular Biology of the Cell} \textbf{13}, 1977--2000.
+
+\bibitem[{Yeh \& Singh(1997)}]{ref:YehSingh97}
+\textsc{Yeh, A.} \& \textsc{Singh, K.} (1997).
+\newblock Balanced {C}onfidence {R}egions {B}ased on {T}ukey's {D}epth and the
+  {B}ootstrap.
+\newblock \textit{J. R. Statist. Soc. B} \textbf{59(3)}, 639--652.
+
+\bibitem[Zuo and Serfling (2000)]{ref:ZuoSerfling00c}
+{\sc  Zuo, Y. and R. Serfling}
+ General notions of statistical depth function. {\it Ann. Statist.} {\bf 28} (2000), no. 2, 461--482.
+
+
+\bibitem[Zuo, Cui and Young (2004)]{ref:ZuoCuiYoung04}
+{\sc   Zuo, Yijun; Cui, Hengjian; Young, Dennis} Influence function and maximum bias of projection depth based estimators.
+{\it Ann. Statist.} {\bf 32 } (2004),  no. 1, 189--218.
+
+
+\bibitem[Zuo (2006)]{ref:Zuo06}
+  {\sc Zuo, Yijun} Multidimensional trimming based on projection depth.  {\it Ann. Statist.} {\bf 34}  (2006),  no. 5, 2211--2251.
+
+\bibitem{Chakraborty99}
+{\sc Chakraborty, B.}
+ On multivariate median regression.
+ {\it  Bernoulli}, {\bf  5} (1999),  no 4, 683--703.
+
+\bibitem{Chakraborty01}
+{\sc Chakraborty, B.}
+On affine equivariant multivariate quantiles.
+{\it   Ann. Inst. Statist. Math.} {\bf  53} (2001),  no. 2, 380--403.
+
+\bibitem{Chakraborty03}
+{\sc Chakraborty, B.}
+On multivariate quantile regression.
+{\it   J. Statist. Plann. Inference} {\bf 110} (2003),  no. 1-2, 109--132.
+
+
+\bibitem{ChakrabortyChaudhuri96}
+{\sc Chakraborty, B., and P. Chaudhuri}
+On a transformation and re-transformation technique for constructing an affine equivariant multivariate median.
+{\it Proc. Amer. Math. Soc.} {\bf 124} (1996), no. 8, 2539--2547.
+
+
+
+
+\bibitem{ChakrabortyChaudhuri98a}
+{\sc Chakraborty, B., and P. Chaudhuri}
+ On an adaptive transformation-retransformation estimate of multivariate location.
+{\it  J. R. Stat. Soc. Ser. B Stat. Methodol.} {\bf 60} (1998a), no. 1, 145--157.
+
+
+\bibitem{ChakrabortyChaudhuri98b}
+{\sc Chakraborty, B., and P. Chaudhuri}
+ On multivariate rank regression.
+   {\it  $L\sb 1$-statistical procedures and related topics (Neuch\^{a}tel, 1997)}, 399--414,
+ IMS Lecture Notes Monogr. Ser., {\bf 31}, Inst. Math. Statist., Hayward, CA, 1997.
+
+
+\bibitem{ChakrabortyChaudhuri99a}
+{\sc Chakraborty, B., and P. Chaudhuri}
+ On affine invariant sign and rank tests in one- and two-sample multivariate problems.
+   {\it   Multivariate analysis, design of experiments, and survey sampling},
+ 499--522, Statist. Textbooks Monogr., {\bf 159}, Dekker, New York, 1999. 
+
+
+\bibitem{ChakrabortyChaudhuri99b}
+{\sc Chakraborty, B., and P. Chaudhuri}
+A note on the robustness of multivariate medians.
+{\it Statist. Probab. Lett.} {\bf 45} (1999), no. 3, 269--276. 
+
+
+\bibitem{Chaudhuri96}
+{\sc  Chaudhuri, P.}, (1996),
+ On a geometric notion of quantiles for multivariate data,
+ {\it  J. Amer. Statist. Assoc.}, {\bf  91} (434), 862--872.
+%
+%\bibitem{IEEEhowto:kopka}
+%{\sc H.~Kopka and P.~W. Daly}, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+\bibitem{MukhopadhyayC11}
+{\sc (N. Mukhopadhyay and Chatterjee, S.)} (2011),
+High dimensional data analysis using multivariate generalized spatial quantiles,
+ {\it J. Mult. Anal.}, {\bf 102} (4),  768--780.
+
+\bibitem{NuriaMangas06}
+{\sc Oliver, Nuria, and Fernando Flores-Mangas}. 
+"HealthGear: a real-time wearable system for monitoring and analyzing physiological signals." 
+{\it Wearable and Implantable Body Sensor Networks, 2006. BSN 2006. International Workshop on.} IEEE, 2006.
+
+\bibitem{PantelopoulosBourbakis10}
+{\sc Pantelopoulos, Alexandros, and Nikolaos G. Bourbakis}. 
+"A survey on wearable sensor-based systems for health monitoring and prognosis." 
+{\it Systems, Man, and Cybernetics, Part C: Applications and Reviews, IEEE Transactions on 40.1} (2010): 1-12.
+
+\bibitem{KoenkerBassett78}
+{\sc Koenker, R. and Bassett, G. } (1978)
+Regression quantiles,
+{\it Econometrica}, {\bf 46}, 33-–50.
+
+
+\bibitem{Casaleetal11}
+Casale, Pierluigi, Oriol Pujol, and Petia Radeva.
+"Human activity recognition from accelerometer data using a wearable device."
+Pattern Recognition and Image Analysis. Springer Berlin Heidelberg, 2011. 289-296.

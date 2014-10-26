@@ -1,17 +1,17 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  16 OCT 2014 16:25
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  24 OCT 2014 16:29
 entering extended mode
-**WeightedProjectionQuantileEstimates.tex|C:/Program Files (x86)/Foxit Software
-/Foxit Reader/Foxit Reader.exe WeightedProjectionQuantileEstimates.pdf
+**AIStats15_10_23_14_6.tex|C:/Program Files (x86)/Foxit Software/Foxit Reader/F
+oxit Reader.exe AIStats15_10_23_14_6.pdf
 
 ! Emergency stop.
-<*> ...ProjectionQuantileEstimates.tex|C:/Program 
-                                                  Files (x86)/Foxit Software...
+<*> AIStats15_10_23_14_6.tex|C:/Program 
+                                        Files (x86)/Foxit Software/Foxit Rea...
 *** (job aborted, file error in nonstop mode)
 
  
 Here is how much of TeX's memory you used:
  3 strings out of 493921
- 60 string characters out of 3148084
+ 45 string characters out of 3148084
  49031 words of memory out of 3000000
  3400 multiletter control sequences out of 15000+200000
  3640 words of font info for 14 fonts, out of 3000000 for 9000

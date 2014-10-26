@@ -1,0 +1,362 @@
+\documentclass[twoside]{article}
+\usepackage{./format/aistats2015}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% \usepackage{graphics}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{color}
+
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Lemma}{Lemma}[section]
+
+\newcommand{\mbfeu}{\mathbf{e}_{\mathbf u} }
+
+% If your paper is accepted, change the options for the package
+% aistats2015 as follows:
+%
+%\usepackage[accepted]{aistats2015}
+%
+% This option will print headings for the title of your paper and
+% headings for the authors names, plus a copyright note at the end of
+% the first column of the first page.
+
+
+\begin{document}
+
+% If your paper is accepted and the title of your paper is very long,
+% the style will print as headings an error message. Use the following
+% command to supply a shorter title of your paper so that it can be
+% used as headings.
+%
+%\runningtitle{I use this title instead because the last one was very long}
+
+% If your paper is accepted and the number of authors is large, the
+% style will print as headings an error message. Use the following
+% command to supply a shorter version of the authors names so that
+% they can be used as headings (for example, use only the surnames)
+%
+%\runningauthor{Surname 1, Surname 2, Surname 3, ...., Surname n}
+
+\twocolumn[
+
+\aistatstitle{Data geometric supervised learning: Supplementary material}
+
+
+\aistatsauthor{ Anonymous Author 1 \And Anonymous Author 2 \And Anonymous Author 3 }
+
+\aistatsaddress{ Unknown Institution 1 \And Unknown Institution 2 \And Unknown Institution 3 } ]
+
+\section{Additional details on mathematical properties}
+
+We use the notations $(\Omega, {\cal{A}}, \mathbb{P})$ for the generic $\sigma$-algebra
+pertaining to which our random elements are defined, and $\omega$ is the notation for 
+a generic point in the sample space. Expectation extended by the $\sigma$-finite measure 
+$\mathbb{P}$ is denoted by $\mathbb{E}$.
+We consider a generic absolutely continuous random vector 
+$X \in {\cal{X}} \subseteq \mathbb{R}^{p}$, 
+with median at the origin $\mathbf{0}$ without loss
+of generality. Random vectors with median not equal to the origin can be location 
+shifted without any significant modification to the results presented below. Random 
+vectors that are not absolutely continuous require some special technical assumptions 
+and additional algebra, which are necessary for mathematical rigor, but are not 
+conceptually challenging though tedious in nature. Below, the norms of all vectors 
+considered is the Euclidean norm, though our results easily extend to many other norms
+in $\mathbb{R}^{p}$, for example, any ${\cal{L}}_{d}$ norm with $d \geq 1$. The inner 
+product is also the standard Euclidean inner product, and again standard variations 
+like weighted inner products may be used with little or no additional effort. All 
+notations are as in the main paper.
+
+Define $\tilde X_{\mathbf{u} i} = 
+w_{\mathbf{u}} w_{2 j_{k}} X_{\mathbf{u} i}$, for $i =1, \ldots, n$.  
+Note that the DCW, in any direction $\mbfeu$, is a minimizer of the expectation of the
+following function 
+\begin{eqnarray*}
+\Psi_{u} (q) &  = 
+\mathbb{I}_{ \{ || X_{\mathbf{u} \perp i} || \leq \epsilon \}} 
+\left[ | \tilde X_{\mathbf{u} i}  - q | + ||\mathbf{u}|| (\tilde X_{\mathbf{u} i}  - q ) 
+\right].
+\end{eqnarray*}
+
+Our results utilize two interesting properties of $X$ and the function 
+$\Psi_{u} (\cdot)$. First, we establish that $\Psi_{u} (q)$ is convex in $q$, and 
+obtain a measurable subgradient function. Second, under fairly standard assumptions on 
+the {\it population} properties (but not necessarily on the sample properties) of 
+the subgradient at the appropriate quantile value, we establish several mathematical 
+and statistical results. An extremely easy 
+example where population and sample values differ 
+may be seen in the context of a Binomial $(n, \theta)$ random variable $Z$. Note that 
+the expectation of $Z/n$ is $\theta$, which is a smooth function on $(0, 1)$. However, 
+the sample expectation, ie, the same quantile computed under the empirical distribution 
+function, is just $Z/n$, which is supported only on discretely many values, and is not 
+a smooth function. 
+
+
+
+Our first result is to establish the convexity of $\Psi_{u} (\cdot)$.
+
+\begin{Lemma} \label{prop:Convexity}
+
+The function
+\begin{eqnarray*}
+\Psi_{\mathbf{u}} (q) &  = 
+\mathbb{I}_{ \{ || X_{\mathbf{u} \perp i} || \leq \epsilon \}} 
+\left[ | \tilde X_{\mathbf{u} i}  - q | - ||\mathbf{u}|| (\tilde X_{\mathbf{u} i}  - q ) 
+\right].
+\end{eqnarray*}
+is convex in $q$, with a measurable subgradient function given by
+ \begin{eqnarray*}
+g (X, q) & = 
+\mathbb{I}_{ \{ || X_{\mathbf{u} \perp i} || \leq \epsilon \}} 
+\left[ \left( 2 \mathbb{I}_{ \{ \leq \tilde{X}_{\mathbf{u} i} \leq q \}} - 1 \right)
+- ||\mathbf{u}|| \right].
+\end{eqnarray*}
+
+\end{Lemma}
+
+The proof of this result is quite simple and hence omitted. 
+We assume that $\mathbb{E} \Psi_{\mathbf{u}} (q) $ is finite for all potential choices 
+of $q$, and has a unique minimizer, which we call $q_{\mathbf{u}}^{*}$. 
+This only requires that the {\it population version} 
+$\mathbb{E} \Psi_{\mathbf{u}} (q) $ is strictly convex in a neighborhood of its minimizer, 
+which is not a strong assumption. The sample version does not require uniqueness, but 
+that may be enforced, as is traditionally done,  by defining the minimizer to be the infimum over all possible values at which the minimum is reached.
+
+
+ 
+\begin{Theorem} \label{thm:Consistency}
+The sample DCW is a consistent estimator of the population DCW, that is 
+ $q_{\mathbf{u}}^{*} \rightarrow q_{\mathbf{u}}^{*}$ almost surely as 
+sample size $n \rightarrow \infty$.
+\end{Theorem}
+
+\begin{Theorem} \label{thm:AsyNorm}
+Under the additional {\bf population level} conditions that  
+$\mathbb{E} g^{2} (X, q_{\mathbf{u}}^{*}) < \infty$,  and that
+the function
+$\mathbb{E} \Psi_{\mathbf{u}} (X, q) $ is twice continuously differentiable at $q_{\mathbf{u}}^{*}$ with the second
+derivative $H$ being positive definite, then as $n \rightarrow \infty$
+\begin{eqnarray*}
+n^{1/2} ( q_{\mathbf{u}} - q_{\mathbf{u}}^{*}) 
+= - n^{-1/2} H^{-1} S_{n} + o_{P} (1),
+\end{eqnarray*}
+where $S_{n} = \sum_{i=1}^{n} g(X_{i}, q_{\mathbf{u}}^{*})$.  
+This implies, in particular, that
+$n^{1/2} ( q_{\mathbf{u}}^{*} - q_{\mathbf{u}}^{*})$ is asymptotically Normal, with asymptotic variance
+$H^{-1} V H^{-1}$ where $V = {\mathrm Var }\  g(X, q_{\mathbf{u}}^{*})$.
+\end{Theorem}
+
+The proofs of both Theorem~\ref{thm:Consistency} and Theorem~\ref{thm:AsyNorm} 
+use convexity, and require considerable algebra, hence only an outline of the 
+kind of argument we use is outlined below. 
+
+Following \cite{Haberman89} and \cite{Niemiro92}, we have the following 
+result:
+
+\begin{Lemma}
+Let $G_{n} (x, \omega)$ $n =1, 2, \ldots, $ be random functions defined on a fixed
+convex set ${\cal{X}} \subseteq \mathbb{R}^{p}$, that are all convex in $x$, for almost 
+all $\omega$. Let $G (x, \omega)$ be a random function such that for each fixed 
+$x \in {\cal{X}}$, $G_{n} (x, \omega) \rightarrow G (x, \omega)$ almost surely. 
+Then for each fixed $M > 0$, we have 
+\begin{eqnarray*}
+\sup_{ ||x|| \leq M} | G_{n} (x, \omega) - G (x, \omega) | \rightarrow 0, 
+\end{eqnarray*}
+almost surely. 
+\end{Lemma}
+
+The proof of this lemma rests on the fact that pointwise convergence of convex 
+functions on a dense subset implies uniform convergence over compact sets, 
+\cite{Rockafellar70}. As in \cite{Niemiro92} and \cite{Bose98}, 
+we use a countable dense set to establish this result. 
+
+Once we have this lemma, the proof of Theorem~\ref{thm:Consistency} follows from 
+a careful algebraic argument. Then, using Theorem~\ref{thm:Consistency}, we 
+construct the proof of Theorem~\ref{thm:AsyNorm} by developing some additional 
+properties relating to the random Bregman divergences constructed using 
+$\Psi_{\mathbf{u}} (X, q)$. 
+
+
+The proof of the theorem on data depth in the original paper is algebraic in nature, 
+and is omitted here.
+
+ \section{Additional details on the simulation experiment}
+
+
+We created two simulation datasets with two variable $X1$ and $X2$ in each dataset:
+
+\begin{enumerate}
+
+\item \textbf{Distinct Class Separation:} Figure \ref{fig:SimulatedExample1} shows the dataset with distinct class separation. The estimated variance covariance matrix of the two variables in the dataset is shown in table \ref{table:Var1}: 
+The red points in the elliptical space at the top corresponds to class label $1$ and the heart shaped data cluster at the bottom corresponds to data label $0$. A total of 15000 data points were generated with 5000 datapoints in class $1$ and 10000 datapoints in class $0$. 
+
+\item \textbf{Less Distinct Class Separation:} Figure \ref{fig:SimulatedExample4} shows the dataset with less distinct class separation and higher overlap between the two classes. The sample variance covariance matrix of the two variables in the dataset is shown in table \ref{table:Var2}: 
+
+
+Also, like dataset 1, the red points in the elliptical space at the top corresponds to class label $1$ and the heart shaped data cluster at the bottom corresponds to data label $0$. A total of 15000 data points were generated with 5000 datapoints in class $1$ and 10000 datapoints in class $0$. 
+
+\end{enumerate}
+
+We split the data into 80 percent train set and 20 percent test set. We train the classification models with the train dataset in both cases and assess the accuracy of classification on the test 20 percent test dataset. We repeat the process 1000 times to ensure sufficient randomization. Apart from our proposed weighted projection quantile based geometric learning algorithm, we also tried out several other standard classification algorithms in the datasets. Described below are the other standard methods for comparison that we tried out on the two datasets.
+
+\begin{itemize}
+
+\item \textbf{Logistic Regression:} We used the standard GLM command in R to fit a logistic regression with the train subset. We predicted the class of the test dataset using the fitted model using \textit{predict.glm} method in R.
+
+\item \textbf{Linear Discriminant Analysis:} We used the \textit{lda} routine in the MASS library of R to fit LDA on the train dataset. We used a prior probability proportional to class representation in the dataset. Since, the sample splitting into train and test were done using stratified sampling for the two classes separately, the proportional representation of the two classes in the original simulated datasets and the train or test subsamples are very similar. The method was run without cross-validation. 
+
+\item \textbf{Quadratic Discriminant Analysis:} We used the \textit{qda} routine in the MASS library of R to fit QDA on the train dataset. We used a prior probability proportional to class representation in the dataset. Since, the sample splitting into train and test were done using stratified sampling for the two classes separately, the proportional representation of the two classes in the original simulated datasets and the train or test subsamples are very similar. The method was run by setting the cross validation parameter to be FALSE. 
+
+\item \textbf{Random Forest:} The R package \textit{randomForest} was used to run random forest classification algorithm on the datasets. The number of trees for each run of random forest was kept at 500. Sampling for tree building was done with replacement. Rest of the parameters were run with default setting. 
+
+\item \textbf{Neural Network:} The R package \textit{nnet} was used for running neural network on the data. The size of the hidden layer was set at 2, case wise sample weights were set at 1, and entropy fit was used instead of maximum conditional likelihood. Rest of the parameters were set at default values of the package. 
+
+\item \textbf{Support Vector Machine:} The \textit{svm} routine in the R package \textit{e1071} was used to run a SVM fit on the data. \textit{Radial basis kernel} ($=exp(-\gamma*|u-v|^2)$) was used for the SVM fit of type \textit{C-Classification} using a scaling of $1$ and a class weight of proportion of observation in each class in the train set. 
+
+\item \textbf{K-nearest neighbor:} The routine \textit{knn} in the R package \textit{class} was used for fitting KNN classification algorithm on the dataset. The parameter \textit{k} was set at 100 and the minimum voting parameter for definite decision was set at zero to avoid conflicts and NAs in the predicted classification. 
+
+\end{itemize}
+
+
+
+The table \ref{table:ComparisonTable1} indicates the accuracy of classification and running time of each of the algorithms on the dataset 1 with distinct class separation. The table \ref{table:ComparisonTable2} indicates the accuracy of classification and running time of each of the algorithms on the dataset 2 with less distinct class separation.
+
+The following simulation graphics shows the graphical output for the two class seperation boundaries generated by various methods in comparison to the proposed method. For each dataset thee graphical plots are included, i.e., the class boundaries with the scatter plot of the data, the class boundaries in comparison to the corresponding iso-depth lines corresponding to the $90^{th}$ quantiles and the class seperation boundaries achieved by the standard methods in comparison to the proposed method. 
+
+\onecolumn
+
+\begin{table}[h]
+\begin{center}
+\caption{\textbf{Variance-Covariance of dataset 1 }}
+\begin{tabular}{p{0.5cm}p{2.5cm}p{2.5cm}}\hline
+&\textbf{X1}&\textbf{X2}\\ \hline
+\textbf{X1}&0.1341062120&0.0002883527\\
+\textbf{X2}&0.0002883527&0.0359856218\\ \hline
+\end{tabular}
+\end{center}
+\label{table:Var1}
+\end{table}
+
+
+\begin{table}[h]
+\begin{center}
+\caption{\textbf{Variance-Covariance of dataset 2 }}
+\begin{tabular}{p{0.5cm}p{2.5cm}p{2.5cm}}\hline
+&\textbf{X1}&\textbf{X2}\\ \hline
+\textbf{X1}&0.0938121199&0.0001310929\\
+\textbf{X2}&0.0001310929&0.0526307035\\ \hline
+\end{tabular}
+\end{center}
+\label{table:Var2}
+\end{table}
+
+
+
+\begin{table}[h]
+\begin{center}
+\caption{\textbf{Comparison of the Proposed Classification Algorithm with Standard Classification Algorithms for Dataset 1 }}
+\begin{tabular}{p{0.5cm}p{5.5cm}p{2.5cm}p{2cm}}\hline
+Sl.&Method&Classification Accuracy&Running Time\\ \hline
+1&Geometric Learning&0.996&1.46\\
+2&Logistic Linear Model&0.981&0.28\\
+3&LDA&0.969&0.22\\
+4&QDA&0.992&0.27\\
+5&Random Forest (500 trees)&0.998&23.61\\
+6&Neural Network&0.967&4.76\\
+7&SVM&0.984&6.45\\
+8&KNN&0.997&1.53\\ \hline
+\end{tabular}
+\end{center}
+\label{table:ComparisonTable1}
+\end{table}
+
+
+\begin{table}[h]
+\begin{center}
+\caption{\textbf{Comparison of the Proposed Classification Algorithm with Standard Classification Algorithms for Dataset 2 }}
+\begin{tabular}{p{0.5cm}p{5.5cm}p{2.5cm}p{2cm}}\hline
+Sl.&Method&Classification Accuracy&Running Time\\ \hline
+1&Geometric Learning&0.976&1.48\\
+2&Logistic Linear Model&0.901&0.31\\
+3&LDA&0.881&0.20\\
+4&QDA&0.974&0.21\\
+5&Random Forest (500 trees)&0.976&31.77\\
+6&Neural Network&0.962&3.56\\
+7&SVM&0.974&8.54\\
+8&KNN&0.989&1.62\\ \hline
+\end{tabular}
+\end{center}
+\label{table:ComparisonTable2}
+\end{table}
+
+
+\begin{figure}[H]
+\includegraphics[width=0.99\textwidth]{WPQSimul1Pic1.png}
+\caption{Scatterplot of Simulated Dataset 1 with Class Separator by the Proposed Geometric Classification Method}
+\label{fig:SimulatedExample1}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.99\textwidth]{WPQSimul1Pic2.png}
+\caption{Scatterplot of Simulated Dataset 1 with Class Separator by the Proposed Geometric Classification Method and the Iso-depth Contours}
+\label{fig:SimulatedExample2}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.99\textwidth]{WPQSimul1Pic3.png}
+\caption{Scatterplot of Simulated Dataset 1 with Class Separator by the Proposed Geometric Classification Method and Other Standard Methods}
+\label{fig:SimulatedExample3}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.99\textwidth]{WPQSimul2Pic1.png}
+\caption{Scatterplot of Simulated Dataset 2 with Class Separator by the Proposed Geometric Classification Method}
+\label{fig:SimulatedExample4}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.99\textwidth]{WPQSimul2Pic2.png}
+\caption{Scatterplot of Simulated Dataset 2 with Class Separator by the Proposed Geometric Classification Method and the Iso-depth Contours}
+\label{fig:SimulatedExample5}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.99\textwidth]{WPQSimul2Pic3.png}
+\caption{Scatterplot of Simulated Dataset 2 with Class Separator by the Proposed Geometric Classification Method and Other Standard Methods}
+\label{fig:SimulatedExample6}
+\end{figure}
+
+
+
+\bibliographystyle{plain}
+
+\newpage
+
+\bibliography{AIBIB}
+
+\end{document}
+
+
+%\item In addition to the conditions of the previous item, assume that
+%\begin{eqnarray*}
+%|| {\frac{\partial}{\partial q}} \BE \Psi_{u, \lambda} (X, q)
+%- {\frac{\partial^{2}}{\partial q^{2}}} \BE \Psi_{u, \lambda} (X, q^{*}) (q - q^{*})||
+%& = & O( || q - q^{*}||^{(3+s)/2} ) \mbox{ as $q \rightarrow q^{*}$}, \\
+%\BE ||g (X, q) - g(X, q^{*}) ||^{2}
+%& = & O( || q - q^{*}||^{1+s} ) \mbox{ as $q \rightarrow q^{*}$}, \\
+%\BE ||g (X, q)||^{r} & < & \infty \mbox{ as $q \rightarrow q^{*}$},
+%\end{eqnarray*}
+%for some $s \in (0,1)$ and $r  > (8 + p(1+s))/(1-s)$. Then the following asymptotic
+%Bahadur-type representation holds with probability 1:
+%\begin{eqnarray*}
+%n^{1/2} ( q_{n} - q^{*}) = - n^{-1/2} H^{-1} S_{n}
+%+ O( n^{-(1+s)/4} (\log \ n)^{1/2} (\log \log \ n)^{(1+s)/4})
+%\end{eqnarray*}
+%as $n \rightarrow \infty$.
+\end{enumerate}
+
+\end{thm}
+
+

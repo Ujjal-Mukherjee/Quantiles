@@ -1,0 +1,16 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: AIStats15_10_23_14_6.aux
+The style file: plain.bst
+Database file #1: ProjQuant.bib
+I was expecting a `,' or a `}'---line 86 of file ProjQuant.bib
+ : 
+ : @book{ChakrabortyChaudhuri99a,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Illegal end of database file---line 465 of file ProjQuant.bib
+ : }
+ :  
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "MukhopadhyayC11"
+Warning--I didn't find a database entry for "Fergu67"
+Warning--I didn't find a database entry for "Chaudhuri96"
+(There were 2 error messages)
