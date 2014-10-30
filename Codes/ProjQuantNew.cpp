@@ -44,7 +44,7 @@ arma::colvec pq(NumericMatrix dx, NumericVector ux){
 
 	arma::colvec P = arma::sort(d*U,"ascend");
 	double alpha = (1+sqrt(Normu))/2;
-	
+
 	int pos = abs(alpha*P.size()-1);
 	arma::colvec ProjQuant = U*P[pos];
 
@@ -65,10 +65,10 @@ arma::Mat<double> genU(int n, NumericVector ux){
 	arma::colvec u(ux.begin(), ux.size(), false);
 	double Normu = sqrt(std::inner_product(u.begin(),u.end(),u.begin(),0.0));
 
-	double theta = 0; 
-	
+	double theta = 0;
+
 	arma::Mat<double> umat(n,2);
-	
+
 	double incr = 2*PI/n;
 
 	for(int i=0; i<n; i++){
@@ -77,8 +77,8 @@ arma::Mat<double> genU(int n, NumericVector ux){
 	umat(i,1) = Normu*sin(theta);
 	theta += incr;
 
-	}	
-	
+	}
+
 	return umat;
 
 }
@@ -148,12 +148,12 @@ double KMeanDist(NumericMatrix dx, NumericVector px, unsigned int k){
 	{
 		Sorted_Sqrt_DiffVec = Sorted_Sqrt_DiffVec.subvec(0,(k-1));
 		KMean = mean(Sorted_Sqrt_DiffVec);
-	}	
-	else 
+	}
+	else
 	{
 		KMean = mean(Sorted_Sqrt_DiffVec);
 	}
-	
+
 	return KMean;
 }
 
@@ -179,10 +179,10 @@ arma::colvec OrthoProjVecNorm(NumericMatrix dx, NumericVector ux){
 	arma::colvec InvNormVec = arma::pow(NormVec,-1);
 
 	arma::colvec SqrtInvNormVec = arma::sqrt(InvNormVec);
-	
+
 	arma::colvec OrthoNorm = arma::sqrt(NormVec-ProjNorm);
 
-	arma::colvec OrthoNormRat = OrthoNorm % SqrtInvNormVec;	
+	arma::colvec OrthoNormRat = OrthoNorm % SqrtInvNormVec;
 
 	return OrthoNormRat;
 
@@ -239,11 +239,11 @@ arma::colvec WtProjQuant(NumericMatrix dx, NumericVector ux, NumericVector we, d
 	 double WtProjQuantile = Proj_sub.elem(alpha_index);*/
 
 	arma::colvec Proj_sub_sort = arma::sort(Proj_sub, "ascend");
-	
+
 	double WtProjQuantile = Proj_sub_sort(alpha);
 
 	arma::colvec WtProjQuantileVec = WtProjQuantile*U;
-	
+
 	return WtProjQuantileVec;
 
 }
@@ -299,13 +299,13 @@ double ProjQuantileDepth(NumericMatrix dx, NumericVector ux, int k, float a, flo
 	{
 		ux = Rcpp::wrap(U);
 	}
-	
+
 	Rcpp::NumericVector q = Rcpp::wrap(pq(dx,ux));
 	double dk = KMeanDist(dx,q,k);
 	Rcpp::NumericVector w = Rcpp::wrap(OrthoProjVecNorm(dx,ux));
 	arma::colvec Q = WtProjQuant(dx, ux, w, dk, a, b, l);
 
-	double norml = std::inner_product(Q.begin(), Q.end(), Q.begin(), 0.0);	
+	double norml = std::inner_product(Q.begin(), Q.end(), Q.begin(), 0.0);
 
 	double alpha = (1+sqrt(Normu))/2;
 
@@ -314,7 +314,7 @@ double ProjQuantileDepth(NumericMatrix dx, NumericVector ux, int k, float a, flo
 	double Depth = exp(-beta);
 
 	return Depth;
-	
+
 }
 
 
@@ -356,7 +356,7 @@ arma::colvec WtProjQuantMod(NumericMatrix dx, NumericVector ux, float k){
 	arma::mat d_submat = d.rows(P_Ortho_Sub_Vec);
 
 	arma::colvec Proj_Quant = pq(Rcpp::wrap(d_submat),ux);
-	
+
 	return Proj_Quant;
 
 }
@@ -391,7 +391,43 @@ Rcpp::NumericVector WtProjQuantProfileMod(NumericMatrix dx, NumericVector ux, fl
 }
 
 
+/********************************************************************************************************
+ *<ProjQuantileDepthMod> Generates a weighted projection quantile profile along a polar coordinate vector.*
+ * Tunnel version *
+ ********************************************************************************************************/
+using namespace Rcpp;
 
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+
+double ProjQuantileDepth(NumericMatrix dx, NumericVector ux, float k){
+
+	arma::colvec u(ux.begin(), ux.size(), false);
+	arma::mat d(dx.begin(), dx.nrow(), dx.ncol(), false);
+
+	double Normu = std::inner_product(u.begin(),u.end(),u.begin(),0.0);
+	arma::colvec U = u/sqrt(Normu);
+
+	if(Normu>=1.0)
+	{
+		ux = Rcpp::wrap(U);
+	}
+
+	Rcpp::NumericVector q = Rcpp::wrap(pq(dx,ux));
+	Rcpp::NumericVector w = Rcpp::wrap(OrthoProjVecNorm(dx,ux));
+	arma::colvec Q = WtProjQuantMod(dx, ux, k);
+
+	double norml = std::inner_product(Q.begin(), Q.end(), Q.begin(), 0.0);
+
+	double alpha = (1+sqrt(Normu))/2;
+
+	double beta = alpha * Normu/norml;
+
+	double Depth = exp(-beta);
+
+	return Depth;
+
+}
 
 
 
