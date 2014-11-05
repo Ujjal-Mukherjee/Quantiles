@@ -142,5 +142,49 @@ Fig. 1 shows a comparison of PQD with Zuo's PD for standard bivariate normal.
 %\end{figure}
 \paragraph{Note} In place of standard bivariate normal, one can use any circularly symmetric $F$, i.e. a distribution that has the same marginal distribution $F_0$ along all one-dimensional projections to come up with an exact formula for $PQD(x,F)$. In that general scenario, $\Phi(.)$ will be replaced by $F_0(.)$ in (1).
 
+\section*{A general class of projection based depth functions}
+\paragraph{Definition}
+We consider a random variable $X\in\mathbb{R}^p$ following the distribution $F$. Define $F_u$ as the projection of $F$ towards any $u\in\mathbb{R}^p$. In this setup, we define a general class of outlyingness (or htped) function:
+\begin{eqnarray}
+O(x,F) = \sup_{\|u\|=1} f(x_u,\theta(F_u))
+\end{eqnarray}
+
+where $f(.)$ is a function satisfying properties mentioned below. $x_u=\langle x,u\rangle/\|u\| $, and $\theta(F_u)$ is a set of parameters (or a parameter) characterizing the distribution function $F_u$. Then we define the depth at $x$ with respect to $F$ as $ D(x,F) = 1/(1+O(x,F)) $.
+
+The necessary properties of $f(.)$ are formulated keeping necessary properties of a depth functions in mind [ref zuo-serf]:
+\paragraph{(F1) \textit{Affine invariant}} $f(x_u,\theta_u) = f(Ax_u+b,\theta^{AX+b}_u)$ for non-singular matrix $A\in\mathbb{R}^{p\times p}$.
+where subscripting denotes projection.
+
+\paragraph{(F2) \textit{Quasi-convex in $x_u$}} for $0<\lambda<1, z=\lambda x+(1-\lambda)y$,
+$$ f(z_u) = f(\lambda x_u+(1-\lambda)y_u) \leq \max\lbrace f(x_u,\theta_u), f(y_u,\theta_u)\rbrace$$
+from which quasi-concavity of $D(x,F)$ follows.
+
+\paragraph{(F3) \textit{Monotonically increasing in $x_u$}} ???
+
+\paragraph{(F4) \textit{Maximized at center of symmetric $F$}} ??
+
+\paragraph{(F5) \textit{Uniformly continuous in both $x_u$ and $\theta(F_u)$}}
+
+\paragraph{Theorem 0} Given an outlyingness function like (1) and an $f(.)$ satisfying properties (F1)-(F5), the resulting depth function is:
+\begin{enumerate}
+\item Affine invariant,
+
+\item Quasi-concave, and as a result $D(x,F)$ decreases monotonically along any ray starting from the deepest point, [ref]
+
+\item Maximized at the center of a symmetric $F$.
+
+\item Uniformly continuous.
+\end{enumerate}
+The proofs easily follow from the corresponding properties of $f(.)$.
+
+\paragraph{}Now suppose that $\theta_{nu}$ is the estimate of $\theta_u$ from a size-$n$ iid sample. Following Zuo, we state some properties regarding the convergence $\theta_{nu}\rightarrow\theta_u$.
+
+\paragraph{(C0)} $ \sup_{\|u\|=1} |\theta_i(F_u)| < \infty$ for $i=1,2,...,k$.
+
+\paragraph{(C1)} $ \sup_{\|u\|=1} |\theta_i(F_{nu})-\theta_i(F_u)| = o_P(1)$ for $i=1,2,...,k$.
+
+\paragraph{(C2)} $ \sup_{\|u\|=1} |\theta_i(F_{nu})-\theta_i(F_u)| = o(1)$ a.s. for $i=1,2,...,k$.
+
+\paragraph{(C3)} $ \sup_{\|u\|=1} |\theta_i(F_{nu})-\theta_i(F_u)| = O_P(1/\sqrt n)$ for $i=1,2,...,k$.
 
 \end{document}
