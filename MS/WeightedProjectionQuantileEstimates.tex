@@ -149,7 +149,7 @@ We consider a random variable $X\in\mathbb{R}^p$ following the distribution $F$.
 O(x,F) = \sup_{\|u\|=1} f(x_u,\theta(F_u))
 \end{eqnarray}
 
-where $f(.)$ is a function satisfying properties mentioned below. $x_u=\langle x,u\rangle/\|u\| $, and $\theta(F_u)$ is a set of parameters (or a parameter) characterizing the distribution function $F_u$. Then we define the depth at $x$ with respect to $F$ as $ D(x,F) = 1/(1+O(x,F)) $.
+where $f(.)$ is a function satisfying properties mentioned below. $x_u=\langle x,u\rangle/\|u\| $, and $\theta:\mathcal{F}\mapsto\Theta \subseteq \mathbb{R}^k$ is a parameter functional (?) characterizing the distribution function $F_u \in \mathcal{F}$, the set of all univariate cdf's. Then we define the depth at $x$ with respect to $F$ as $ D(x,F) = 1/(1+O(x,F)) $.
 
 The necessary properties of $f(.)$ are formulated keeping necessary properties of a depth functions in mind [ref zuo-serf]:
 \paragraph{(F1) \textit{Affine invariant}} $f(x_u,\theta_u) = f(Ax_u+b,\theta^{AX+b}_u)$ for non-singular matrix $A\in\mathbb{R}^{p\times p}$.
@@ -166,25 +166,36 @@ from which quasi-concavity of $D(x,F)$ follows.
 \paragraph{(F5) \textit{Uniformly continuous in both $x_u$ and $\theta(F_u)$}}
 
 \paragraph{Theorem 0} Given an outlyingness function like (1) and an $f(.)$ satisfying properties (F1)-(F5), the resulting depth function is:
-\begin{enumerate}
-\item Affine invariant,
 
-\item Quasi-concave, and as a result $D(x,F)$ decreases monotonically along any ray starting from the deepest point, [ref]
+(i) Affine invariant,
 
-\item Maximized at the center of a symmetric $F$.
+(ii) Quasi-concave, and as a result $D(x,F)$ decreases monotonically along any ray starting from the deepest point, [ref]
 
-\item Uniformly continuous.
-\end{enumerate}
+(iii) Maximized at the center of a symmetric $F$.
+
+(iv) Uniformly continuous.
+\vspace{.5cm}
+
 The proofs easily follow from the corresponding properties of $f(.)$.
 
 \paragraph{}Now suppose that $\theta_{nu}$ is the estimate of $\theta_u$ from a size-$n$ iid sample. Following Zuo, we state some properties regarding the convergence $\theta_{nu}\rightarrow\theta_u$.
 
-\paragraph{(C0)} $ \sup_{\|u\|=1} |\theta_i(F_u)| < \infty$ for $i=1,2,...,k$.
+\textbf{(C0)} $ \sup_{\|u\|=1} |\theta_i(F_u)| < \infty$ for $i=1,2,...,k$.
 
-\paragraph{(C1)} $ \sup_{\|u\|=1} |\theta_i(F_{nu})-\theta_i(F_u)| = o_P(1)$ for $i=1,2,...,k$.
+\textbf{(C1)} $ \sup_{\|u\|=1} |\theta_i(F_{nu})-\theta_i(F_u)| = o_P(1)$ for $i=1,2,...,k$.
 
-\paragraph{(C2)} $ \sup_{\|u\|=1} |\theta_i(F_{nu})-\theta_i(F_u)| = o(1)$ a.s. for $i=1,2,...,k$.
+\textbf{(C2)} $ \sup_{\|u\|=1} |\theta_i(F_{nu})-\theta_i(F_u)| = o(1)$ a.s. for $i=1,2,...,k$.
 
-\paragraph{(C3)} $ \sup_{\|u\|=1} |\theta_i(F_{nu})-\theta_i(F_u)| = O_P(1/\sqrt n)$ for $i=1,2,...,k$.
+\textbf{(C3)} $ \sup_{\|u\|=1} |\theta_i(F_{nu})-\theta_i(F_u)| = O_P(1/\sqrt n)$ for $i=1,2,...,k$.
+\vspace{.5cm}
+
+Again following the lines of Zuo's paper, we say that:
+\paragraph{Theorem 1} Given the condition (C1) above (?):
+
+(i)$\sup_{x\in\mathbb{R}^d} |D(x,F_n)-D(x,F)|=o_P(1)$ given (C2) holds.
+
+(ii)$\sup_{x\in\mathbb{R}^d} |D(x,F_n)-D(x,F)|=O_P(1)$ given (C3) holds.
+
+(iii)$\sup_{x\in\mathbb{R}^d} |D(x,F_n)-D(x,F)|=O(1/ \sqrt n)$ given (C4) holds.
 
 \end{document}
