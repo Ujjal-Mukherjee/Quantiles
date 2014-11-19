@@ -16,7 +16,7 @@ EPQD = function(X, xx){
   Fuxu.vec = rep(0,100)
   
   for(iu in 1:100){
-    u = rnorm(p); u = u/sqrt(sum(u^2))
+    u = runif(p,-1,1); u = u/sqrt(sum(u^2))
     uecdf = ecdf(X%*%u)
     Fuxu.vec[iu] = uecdf(xx%*%u)
   }
@@ -24,7 +24,7 @@ EPQD = function(X, xx){
 }
 
 ## function to compute outlier score
-outlier.score = function(X, k=NULL){
+outlier.score = function(X, type, k=NULL){
   n = nrow(X)
   if(is.null(k)){
     k = floor(.1*n)
@@ -37,21 +37,68 @@ outlier.score = function(X, k=NULL){
   
   # get depth and knn average dist for all data
   for(i in 1:n){
-    depth.vec[i] = ProjQuantileDepthMod(X[-i,], X[i,], .5)
-    #depth.vec[i] = EPQD(X[-i,], X[i,])
+    if(type==1){
+      depth.vec[i] = ProjQuantileDepthMod(X[-i,], X[i,], .5)
+    }      
+    else{
+      depth.vec[i] = EPQD(X[-i,], X[i,])
+    }
+    
     ik = order(dist.mat[i,])[1:k]
     knn.vec[i] = mean(dist.mat[i,ik])
   }
   
-  return(log(knn.vec^2/depth.vec))
+  return(log(knn.vec/depth.vec))
 }
+
+## simulated data
+## Setup 1... bivariate normal.. 5% contamination far away
+set.seed(11182014)
+X1 = matrix(rnorm(950), ncol=2)
+X2 = matrix(rnorm(50)+10, ncol=2)
+label.vec = c(rep("1",475), rep("2", 25))
+X = rbind(X1,X2)
+
+score.vec = outlier.score(X, type=2) # type 1 = ray depth, type 2 = PQD
+cols = c(rep("red",475), rep("green", 25))
+
+par(mfrow=c(1,2))
+plot(score.vec, col=cols, pch=19, cex=.5)
+abline(h=quantile(score.vec,.95), lty=2, lwd=2)
+#abline(h=quantile(score.vec,.05), lty=2, lwd=2)
+
+q9 = quantile(score.vec,.95)
+col.vec = ifelse(score.vec>q9, "darkred", "darkgreen")
+plot(X, pch=label.vec, col=col.vec)
+par(mfrow=c(1,1))
+
+## Setup 2... bivariate normal.. 5% contamination far away, ring-like
+X1 = matrix(rnorm(950), ncol=2)
+X2 = matrix(runif(50, -1, 1), ncol=2)
+normX2 = sqrt(X2[,1]^2+X2[,2]^2)
+X2 = X2/normX2*10
+label.vec = c(rep("1",475), rep("2", 25))
+X = rbind(X1,X2)
+
+score.vec = outlier.score(X, type=2) # type 1 = ray depth, type 2 = PQD
+cols = c(rep("red",475), rep("green", 25))
+
+par(mfrow=c(1,2))
+plot(score.vec, col=cols, pch=19, cex=.5)
+abline(h=quantile(score.vec,.95), lty=2, lwd=2)
+#abline(h=quantile(score.vec,.05), lty=2, lwd=2)
+
+q9 = quantile(score.vec,.95)
+col.vec = ifelse(score.vec>q9, "darkred", "darkgreen")
+plot(X, pch=label.vec, col=col.vec)
+par(mfrow=c(1,1))
 
 ## colon data
 require(cepp)
 data(Colon)
 n = length(Colon$Y)
 
-score.vec = outlier.score(Colon$X)
+score.vec = outlier.score(Colon$X, type=2)
 
 cols = ifelse(Colon$Y==2, "red","green")
 plot(score.vec, col=cols, pch=19, cex=.5)
@@ -83,7 +130,7 @@ depth.vec = rep(0,n)
 DnaAlt.x = as.matrix(DnaAlteration[,-1])
 DnaAlt.y = as.matrix(DnaAlteration[,1])
 
-score.vec = outlier.score(DnaAlt.x)
+score.vec = outlier.score(DnaAlt.x, type=2)
 
 cols = ifelse(DnaAlt.y==1, "red","green")
 plot(score.vec, col=cols, pch=19, cex=.5)
