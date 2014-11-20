@@ -146,10 +146,10 @@ Fig. 1 shows a comparison of PQD with Zuo's PD for standard bivariate normal.
 \paragraph{Definition}
 We consider a random variable $X\in\mathbb{R}^p$ following the distribution $F$. Define $F_u$ as the projection of $F$ towards any $u\in\mathbb{R}^p$. In this setup, we define a general class of outlyingness (or htped) function:
 \begin{eqnarray}
-O(x,F) = \sup_{\|u\|=1} f(x_u,\theta(F_u))
+O(x,F) = \sup_{\|u\|=1} f(x_u,\theta_u)
 \end{eqnarray}
 
-where $f(.)$ is a function satisfying properties mentioned below. $x_u=\langle x,u\rangle/\|u\| $, and $\theta:\mathcal{F}\mapsto\Theta \subseteq \mathbb{R}^k$ is a parameter functional (?) characterizing the distribution function $F_u \in \mathcal{F}$, the set of all univariate cdf's. Then we define the depth at $x$ with respect to $F$ as $ D(x,F) = 1/(1+O(x,F)) $.
+where $f(.)$ is a function satisfying properties mentioned below. $x_u=\langle x,u\rangle/\|u\| $, and $\theta\in\Theta_u \subseteq \mathbb{R}^k$ is a set of parameters (or a single parameter) characterizing the distribution function $F_u$. Then we define the depth at $x$ with respect to $F$ as $ D(x,F) = 1/(1+O(x,F)) $.
 
 The necessary properties of $f(.)$ are formulated keeping necessary properties of a depth functions in mind [ref zuo-serf]:
 \paragraph{(F1) \textit{Affine invariant}} $f(x_u,\theta_u) = f(Ax_u+b,\theta^{AX+b}_u)$ for non-singular matrix $A\in\mathbb{R}^{p\times p}$.
@@ -163,7 +163,7 @@ from which quasi-concavity of $D(x,F)$ follows.
 
 \paragraph{(F4) \textit{Maximized at center of symmetric $F$}} ??
 
-\paragraph{(F5) \textit{Uniformly continuous in both $x_u$ and $\theta(F_u)$}}
+\paragraph{(F5) \textit{Uniformly continuous in both $x_u$ and $\theta_u$}}
 
 \paragraph{Theorem 0} Given an outlyingness function like (1) and an $f(.)$ satisfying properties (F1)-(F5), the resulting depth function is:
 
@@ -173,29 +173,45 @@ from which quasi-concavity of $D(x,F)$ follows.
 
 (iii) Maximized at the center of a symmetric $F$.
 
-(iv) Uniformly continuous.
+(iv) Approaches a limit $c$ at infinity, i.e. $D(x,F) \rightarrow c$ as $\|x\| \rightarrow \infty$.
+
+(v) Uniformly continuous.
 \vspace{.5cm}
 
 The proofs easily follow from the corresponding properties of $f(.)$.
 
 \paragraph{}Now suppose that $\theta_{nu}$ is the estimate of $\theta_u$ from a size-$n$ iid sample. Following Zuo, we state some properties regarding the convergence $\theta_{nu}\rightarrow\theta_u$.
 
-\textbf{(C0)} $ \sup_{\|u\|=1} |\theta_i(F_u)| < \infty$ for $i=1,2,...,k$.
+\textbf{(C0)} $ \sup_{\|u\|=1} \|\theta_u\| < \infty$ for $i=1,2,...,k$.
 
-\textbf{(C1)} $ \sup_{\|u\|=1} |\theta_i(F_{nu})-\theta_i(F_u)| = o_P(1)$ for $i=1,2,...,k$.
+\textbf{(C1)} $ \sup_{\|u\|=1} \|\theta_{nu}-\theta_u\| = o_P(1)$
 
-\textbf{(C2)} $ \sup_{\|u\|=1} |\theta_i(F_{nu})-\theta_i(F_u)| = o(1)$ a.s. for $i=1,2,...,k$.
+\textbf{(C2)} $ \sup_{\|u\|=1} \|\theta_{nu}-\theta_u\| = o(1)$
 
-\textbf{(C3)} $ \sup_{\|u\|=1} |\theta_i(F_{nu})-\theta_i(F_u)| = O_P(1/\sqrt n)$ for $i=1,2,...,k$.
+\textbf{(C3)} $ \sup_{\|u\|=1} \|\theta_{nu}-\theta_u\| = O_P(1/\sqrt n)$
 \vspace{.5cm}
 
 Again following the lines of Zuo's paper, we say that:
-\paragraph{Theorem 1} Given the condition (C1) above (?):
+\paragraph{Theorem 1} Given the condition (C0) above (?):
 
-(i)$\sup_{x\in\mathbb{R}^d} |D(x,F_n)-D(x,F)|=o_P(1)$ given (C2) holds.
+(i) $\sup_{x\in\mathbb{R}^d} |D(x,F_n)-D(x,F)| = o_P(1)$ given (C2) holds.
 
-(ii)$\sup_{x\in\mathbb{R}^d} |D(x,F_n)-D(x,F)|=O_P(1)$ given (C3) holds.
+(ii) $\sup_{x\in\mathbb{R}^d} |D(x,F_n)-D(x,F)| = o(1)$ given (C3) holds.
 
-(iii)$\sup_{x\in\mathbb{R}^d} |D(x,F_n)-D(x,F)|=O(1/ \sqrt n)$ given (C4) holds.
+(iii) $\sup_{x\in\mathbb{R}^d} |D(x,F_n)-D(x,F)| = O(1/ \sqrt n)$ given (C4) holds.
 
+\paragraph{Proof}
+\textbf{(ii)} Consider a sequence of cdfs $\{F_n\}$ converging in distribution to the true CDF $F$. Then we have for $x\in\mathbb{R}^p$
+$$ |D(x,F_n)-D(x,F)| = \frac{|O(x,F_n)-O(x,F)|}{(1+O(x,F_n))(1+O(x,F))} \leq |O(x,F_n)-O(x,F)| $$
+
+Now we have that
+\begin{eqnarray*}
+|O(x, F_n) - O(x, F)| &=& \left| \sup_{\|u\|=1} f(x_u, \theta_{nu}) - \sup_{\|u\|=1} f(x_u, \theta_u) \right|\\
+&\leq & \sup_{\|u\|=1} \left| f(x_u, \theta_{nu}) - f(x_u, \theta_u) \right|\\
+\end{eqnarray*}
+
+Since $f(x_u,.)$ is uniformly continuous in $\theta_u$ and (C2) holds by assumption, it follows that for fixed $x$ we have $O(x,F_n) \rightarrow O(x,F)$ as $n \rightarrow \infty$. This allows us to conclude that for any $M>0$ and $x$ such that $\|x\| \leq M$,
+$$ \sup_{\|x\| \leq M} |D(x,F_n) - D(x,F)| \rightarrow 0 \mbox{ as } n \rightarrow \infty $$
+
+For $\|x\| > M$, we have $D(x,F) \rightarrow c$ as $\|x\| \rightarrow \infty$ by Part (iv) of Theorem 0. Moreover, $O(x,F_n) \geq f(x_u, \theta_{nu})$ for all $u$ $<incomplete>$.
 \end{document}

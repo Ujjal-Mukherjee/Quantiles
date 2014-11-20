@@ -44,7 +44,7 @@ outlier.score = function(X, type, k=NULL){
       depth.vec[i] = EPQD(X[-i,], X[i,])
     }
     
-    ik = order(dist.mat[i,])[1:k]
+    ik = order(dist.mat[i,])[2:(k+1)]
     knn.vec[i] = mean(dist.mat[i,ik])
   }
   
@@ -139,3 +139,35 @@ abline(h=quantile(score.vec,.1), lty=2, lwd=2)
 
 t.test(depth.vec[which(DnaAlt.y==1)], depth.vec[which(DnaAlt.y==0)])
 ks.test(depth.vec[which(DnaAlt.y==1)], depth.vec[which(DnaAlt.y==0)])
+
+# stackloss data
+par(mfrow=c(2,2))
+plot(lm(stack.loss~., data=stackloss))
+par(mfrow=c(1,1))
+
+score.vec = outlier.score(as.matrix(stackloss[,-4]), type=2)
+
+plot(score.vec, pch=19, cex=.5)
+abline(h=quantile(score.vec,.9), lty=2, lwd=2)
+
+# hawkins bradu kass data
+require(robustbase)
+
+score.vec = outlier.score(as.matrix(hbk[,-4]), type=2, k=10)
+plot(score.vec, pch=19, cex=.5)
+#abline(h=quantile(score.vec,.9), lty=2, lwd=2)
+
+# brain weight data
+Animals1 = within(Animals, {lbodywt=log(body)
+                            lbrainwt=log(brain)})
+
+score.vec = outlier.score(as.matrix(Animals1[,1:2]), type=2)
+
+par(mfrow=c(1,2))
+with(Animals1, plot(lbodywt, lbrainwt, col="white"))
+with(Animals1, text(lbodywt, lbrainwt, row.names(Animals), cex=.7))
+
+plot(score.vec, col="white")
+text(score.vec, row.names(Animals), cex=.7)
+abline(h=quantile(score.vec,.9), lty=2, lwd=2)
+par(mfrow=c(1,1))
