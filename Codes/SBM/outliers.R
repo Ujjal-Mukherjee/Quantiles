@@ -24,7 +24,7 @@ EPQD = function(X, xx){
 }
 
 ## function to compute outlier score
-outlier.score = function(X, type, k=NULL){
+outlier.score = function(X, type, k=NULL, alpha){
   n = nrow(X)
   if(is.null(k)){
     k = floor(.1*n)
@@ -48,7 +48,10 @@ outlier.score = function(X, type, k=NULL){
     knn.vec[i] = mean(dist.mat[i,ik])
   }
   
-  return(log(knn.vec/depth.vec))
+  lknn = log(knn.vec)
+  lhtped = -log(depth.vec)
+  
+  return(alpha*lknn + (1-alpha)*lhtped)
 }
 
 ## simulated data
@@ -59,12 +62,12 @@ X2 = matrix(rnorm(50)+10, ncol=2)
 label.vec = c(rep("1",475), rep("2", 25))
 X = rbind(X1,X2)
 
-score.vec = outlier.score(X, type=2) # type 1 = ray depth, type 2 = PQD
+score.vec = outlier.score(X, type=1, alpha=.5) # type 1 = ray depth, type 2 = PQD
 cols = c(rep("red",475), rep("green", 25))
 
 par(mfrow=c(1,2))
 plot(score.vec, col=cols, pch=19, cex=.5)
-abline(h=quantile(score.vec,.95), lty=2, lwd=2)
+abline(h=quantile(score.vec,.95), lty=2, lwd=1)
 #abline(h=quantile(score.vec,.05), lty=2, lwd=2)
 
 q9 = quantile(score.vec,.95)
@@ -80,7 +83,7 @@ X2 = X2/normX2*10
 label.vec = c(rep("1",475), rep("2", 25))
 X = rbind(X1,X2)
 
-score.vec = outlier.score(X, type=2) # type 1 = ray depth, type 2 = PQD
+score.vec = outlier.score(X, type=1) # type 1 = ray depth, type 2 = PQD
 cols = c(rep("red",475), rep("green", 25))
 
 par(mfrow=c(1,2))
@@ -98,7 +101,7 @@ require(cepp)
 data(Colon)
 n = length(Colon$Y)
 
-score.vec = outlier.score(Colon$X, type=2)
+score.vec = outlier.score(Colon$X, type=1, alpha=.5)
 
 cols = ifelse(Colon$Y==2, "red","green")
 plot(score.vec, col=cols, pch=19, cex=.5)
@@ -130,12 +133,11 @@ depth.vec = rep(0,n)
 DnaAlt.x = as.matrix(DnaAlteration[,-1])
 DnaAlt.y = as.matrix(DnaAlteration[,1])
 
-score.vec = outlier.score(DnaAlt.x, type=2)
+score.vec = outlier.score(DnaAlt.x, type=1, alpha=.5)
 
 cols = ifelse(DnaAlt.y==1, "red","green")
 plot(score.vec, col=cols, pch=19, cex=.5)
 abline(h=quantile(score.vec,.9), lty=2, lwd=2)
-abline(h=quantile(score.vec,.1), lty=2, lwd=2)
 
 t.test(depth.vec[which(DnaAlt.y==1)], depth.vec[which(DnaAlt.y==0)])
 ks.test(depth.vec[which(DnaAlt.y==1)], depth.vec[which(DnaAlt.y==0)])
@@ -145,7 +147,8 @@ par(mfrow=c(2,2))
 plot(lm(stack.loss~., data=stackloss))
 par(mfrow=c(1,1))
 
-score.vec = outlier.score(as.matrix(stackloss[,-4]), type=2)
+score.vec = outlier.score(as.matrix(stackloss[,-4]),
+                          type=1, alpha=.8)
 
 plot(score.vec, pch=19, cex=.5)
 abline(h=quantile(score.vec,.9), lty=2, lwd=2)
@@ -153,7 +156,8 @@ abline(h=quantile(score.vec,.9), lty=2, lwd=2)
 # hawkins bradu kass data
 require(robustbase)
 
-score.vec = outlier.score(as.matrix(hbk[,-4]), type=2, k=10)
+score.vec = outlier.score(as.matrix(hbk[,-4]),
+                          type=1, alpha=.2)
 plot(score.vec, pch=19, cex=.5)
 #abline(h=quantile(score.vec,.9), lty=2, lwd=2)
 
@@ -161,7 +165,7 @@ plot(score.vec, pch=19, cex=.5)
 Animals1 = within(Animals, {lbodywt=log(body)
                             lbrainwt=log(brain)})
 
-score.vec = outlier.score(as.matrix(Animals1[,1:2]), type=2)
+score.vec = outlier.score(as.matrix(Animals1[,3:4]), type=1)
 
 par(mfrow=c(1,2))
 with(Animals1, plot(lbodywt, lbrainwt, col="white"))

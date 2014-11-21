@@ -313,7 +313,7 @@ double ProjQuantileDepth(NumericMatrix dx, NumericVector ux, int k, float a, flo
 
 	double Depth = exp(-beta);
 
-	return beta;
+	return Depth;
 
 }
 
@@ -423,9 +423,9 @@ double ProjQuantileDepthMod(NumericMatrix dx, NumericVector ux, float k){
 
 	double beta = alpha * Normu/norml;
 
-	double Depth = beta;
+	double Depth = exp(-abs(beta-0.5));
 
-	return beta;
+	return Depth;
 
 }
 
