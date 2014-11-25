@@ -27,7 +27,8 @@ EPQD = function(X, xx){
 outlier.score = function(X, type, k=NULL, alpha){
   n = nrow(X)
   if(is.null(k)){
-    k = floor(.1*n)
+    #k = floor(.1*n)
+    k = floor(sqrt(n))
   }
   depth.vec = rep(0,n)
   knn.vec = rep(0,n)
@@ -59,11 +60,11 @@ outlier.score = function(X, type, k=NULL, alpha){
 set.seed(11182014)
 X1 = matrix(rnorm(950), ncol=2)
 X2 = matrix(rnorm(50)+10, ncol=2)
-label.vec = c(rep("1",475), rep("2", 25))
 X = rbind(X1,X2)
 
-score.vec = outlier.score(X, type=1, alpha=.5) # type 1 = ray depth, type 2 = PQD
-cols = c(rep("red",475), rep("green", 25))
+score.vec = outlier.score(X, type=1, k=5, alpha=.2) # type 1 = ray depth, type 2 = PQD
+cols = c(rep("darkgreen",475), rep("darkred", 25))
+label.vec = ifelse(score.vec>q9, 19, 1)
 
 par(mfrow=c(1,2))
 plot(score.vec, col=cols, pch=19, cex=.5)
@@ -71,29 +72,50 @@ abline(h=quantile(score.vec,.95), lty=2, lwd=1)
 #abline(h=quantile(score.vec,.05), lty=2, lwd=2)
 
 q9 = quantile(score.vec,.95)
-col.vec = ifelse(score.vec>q9, "darkred", "darkgreen")
-plot(X, pch=label.vec, col=col.vec)
+plot(X, pch=label.vec, col=cols)
 par(mfrow=c(1,1))
 
-## Setup 2... bivariate normal.. 5% contamination far away, ring-like
+# writeup plots
+score1 = outlier.score(X, type=1, alpha=.1)
+score2 = outlier.score(X, type=1, alpha=.5)
+score3 = outlier.score(X, type=1, alpha=.9)
+cols = c(rep("green",475), rep("red", 25))
+
+par(mfrow=c(1,3))
+plot(score1, col=cols, pch=19, cex=.5, ylab="outlier score")
+plot(score2, col=cols, pch=19, cex=.5, ylab="outlier score")
+plot(score3, col=cols, pch=19, cex=.5, ylab="outlier score")
+par(mfrow=c(1,1))
+
+## Setup 2... bivariate normal.. 5% contamination far away, scattered
 X1 = matrix(rnorm(950), ncol=2)
-X2 = matrix(runif(50, -1, 1), ncol=2)
-normX2 = sqrt(X2[,1]^2+X2[,2]^2)
-X2 = X2/normX2*10
+X2 = matrix(rnorm(50)+sample(c(5:8, -8:-5), 50, replace=T), ncol=2)
 label.vec = c(rep("1",475), rep("2", 25))
 X = rbind(X1,X2)
 
-score.vec = outlier.score(X, type=1) # type 1 = ray depth, type 2 = PQD
-cols = c(rep("red",475), rep("green", 25))
+score.vec = outlier.score(X, type=1, alpha=0) # type 1 = ray depth, type 2 = PQD
+cols = c(rep("darkgreen",475), rep("darkred", 25))
+label.vec = ifelse(score.vec>q9, 19, 1)
 
 par(mfrow=c(1,2))
 plot(score.vec, col=cols, pch=19, cex=.5)
-abline(h=quantile(score.vec,.95), lty=2, lwd=2)
+abline(h=quantile(score.vec,.95), lty=2, lwd=1)
 #abline(h=quantile(score.vec,.05), lty=2, lwd=2)
 
 q9 = quantile(score.vec,.95)
-col.vec = ifelse(score.vec>q9, "darkred", "darkgreen")
-plot(X, pch=label.vec, col=col.vec)
+plot(X, pch=label.vec, col=cols)
+par(mfrow=c(1,1))
+
+# writeup plots
+score1 = outlier.score(X, type=1, alpha=.1)
+score2 = outlier.score(X, type=1, alpha=.5)
+score3 = outlier.score(X, type=1, alpha=.9)
+cols = c(rep("green",475), rep("red", 25))
+
+par(mfrow=c(1,3))
+plot(score1, col=cols, pch=19, cex=.5, ylab="outlier score")
+plot(score2, col=cols, pch=19, cex=.5, ylab="outlier score")
+plot(score3, col=cols, pch=19, cex=.5, ylab="outlier score")
 par(mfrow=c(1,1))
 
 ## colon data
@@ -153,6 +175,18 @@ score.vec = outlier.score(as.matrix(stackloss[,-4]),
 plot(score.vec, pch=19, cex=.5)
 abline(h=quantile(score.vec,.9), lty=2, lwd=2)
 
+# writeup plots
+X = as.matrix(stackloss[,-4])
+score1 = outlier.score(X, type=1, alpha=0)
+score2 = outlier.score(X, type=1, alpha=.5)
+score3 = outlier.score(X, type=1, alpha=1)
+
+par(mfrow=c(1,3))
+plot(score1, pch=19, ylab="outlier score")
+plot(score2, pch=19, ylab="outlier score")
+plot(score3, pch=19, ylab="outlier score")
+par(mfrow=c(1,1))
+
 # hawkins bradu kass data
 require(robustbase)
 
@@ -160,6 +194,18 @@ score.vec = outlier.score(as.matrix(hbk[,-4]),
                           type=1, alpha=.2)
 plot(score.vec, pch=19, cex=.5)
 #abline(h=quantile(score.vec,.9), lty=2, lwd=2)
+
+# writeup plots
+X = as.matrix(hbk[,-4])
+score1 = outlier.score(X, type=1, alpha=.05)
+score2 = outlier.score(X, type=1, alpha=.5)
+score3 = outlier.score(X, type=1, alpha=.95)
+
+par(mfrow=c(1,3))
+plot(score1, pch=19, cex=.8, ylab="outlier score"); abline(v=14, lty=2)
+plot(score2, pch=19, cex=.8, ylab="outlier score"); abline(v=14, lty=2)
+plot(score3, pch=19, cex=.8, ylab="outlier score"); abline(v=14, lty=2)
+par(mfrow=c(1,1))
 
 # brain weight data
 Animals1 = within(Animals, {lbodywt=log(body)
