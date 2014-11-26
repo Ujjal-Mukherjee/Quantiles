@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  25 NOV 2014 00:02
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.20)  25 NOV 2014 19:57
 entering extended mode
 **WPQoutliers.tex
 ("C:\Study\My projects\Quantiles\MS\WPQoutliers.tex"
@@ -139,53 +139,10 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-("C:\Study\LaTeX\MikTeX 2.9\tex\latex\tools\multicol.sty"
-Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
-\c@tracingmulticols=\count100
-\mult@box=\box28
-\multicol@leftmargin=\dimen114
-\c@unbalance=\count101
-\c@collectmore=\count102
-\doublecol@number=\count103
-\multicoltolerance=\count104
-\multicolpretolerance=\count105
-\full@width=\dimen115
-\page@free=\dimen116
-\premulticols=\dimen117
-\postmulticols=\dimen118
-\multicolsep=\skip46
-\multicolbaselineskip=\skip47
-\partial@page=\box29
-\last@line=\box30
-\mult@rightbox=\box31
-\mult@grightbox=\box32
-\mult@gfirstbox=\box33
-\mult@firstbox=\box34
-\@tempa=\box35
-\@tempa=\box36
-\@tempa=\box37
-\@tempa=\box38
-\@tempa=\box39
-\@tempa=\box40
-\@tempa=\box41
-\@tempa=\box42
-\@tempa=\box43
-\@tempa=\box44
-\@tempa=\box45
-\@tempa=\box46
-\@tempa=\box47
-\@tempa=\box48
-\@tempa=\box49
-\@tempa=\box50
-\@tempa=\box51
-\c@columnbadness=\count106
-\c@finalcolumnbadness=\count107
-\last@try=\dimen119
-\multicolovershoot=\dimen120
-\multicolundershoot=\dimen121
-\mult@nat@firstbox=\box52
-\colbreak@box=\box53
-\multicol@sort@counter=\count108
+("C:\Study\LaTeX\MikTeX 2.9\tex\latex\cite\cite.sty"
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
 )
 ("C:\Study\LaTeX\MikTeX 2.9\tex\latex\caption\caption.sty"
 Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
@@ -193,127 +150,147 @@ Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 ("C:\Study\LaTeX\MikTeX 2.9\tex\latex\caption\caption3.sty"
 Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 57.
-\captionmargin=\dimen122
-\captionmargin@=\dimen123
-\captionwidth=\dimen124
-\caption@tempdima=\dimen125
-\caption@indent=\dimen126
-\caption@parindent=\dimen127
-\caption@hangindent=\dimen128
+\captionmargin=\dimen114
+\captionmargin@=\dimen115
+\captionwidth=\dimen116
+\caption@tempdima=\dimen117
+\caption@indent=\dimen118
+\caption@parindent=\dimen119
+\caption@hangindent=\dimen120
 )
-\c@ContinuedFloat=\count109
+\c@ContinuedFloat=\count100
 )
-("C:\Study\LaTeX\MikTeX 2.9\tex\latex\graphics\epsfig.sty"
-Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
-\epsfxsize=\dimen129
-\epsfysize=\dimen130
-)
-("C:\Study\LaTeX\MikTeX 2.9\tex\latex\base\latexsym.sty"
-Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
-\symlasy=\mathgroup6
-LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
-(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
-)
-\c@observation=\count110
-\c@fact=\count111
+\c@observation=\count101
+\c@fact=\count102
 
 ("C:\Study\My projects\Quantiles\MS\WPQoutliers.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
 
 (C:\Users\Subho\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count112
-\scratchdimen=\dimen131
-\scratchbox=\box54
-\nofMPsegments=\count113
-\nofMParguments=\count114
+\scratchcounter=\count103
+\scratchdimen=\dimen121
+\scratchbox=\box28
+\nofMPsegments=\count104
+\nofMParguments=\count105
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count115
-\MPscratchDim=\dimen132
-\MPnumerator=\count116
-\makeMPintoPDFobject=\count117
+\MPscratchCnt=\count106
+\MPscratchDim=\dimen122
+\MPnumerator=\count107
+\makeMPintoPDFobject=\count108
 \everyMPtoPDFconversion=\toks22
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 20.
+LaTeX Font Info:    Try loading font information for U+msa on input line 18.
  ("C:\Study\LaTeX\MikTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 20.
+LaTeX Font Info:    Try loading font information for U+msb on input line 18.
 
 ("C:\Study\LaTeX\MikTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for U+lasy on input line 20.
+) [1
 
-("C:\Study\LaTeX\MikTeX 2.9\tex\latex\base\ulasy.fd"
-File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-)
-Overfull \hbox (12.81088pt too wide) in paragraph at lines 31--32
- [] \OT1/cmr/m/n/10 In the first setup we con-sider 500-size sam-ple, 95% of wh
-ich are from $\OMS/cmsy/m/n/10 N\OT1/cmr/m/n/10 ((0\OML/cmm/m/it/10 ; \OT1/cmr/
-m/n/10 0)[]\OML/cmm/m/it/10 ; I[]\OT1/cmr/m/n/10 )$
- []
+{C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<outlier_sim11.png, id=15, 401.5pt x 401.5pt>
+File: outlier_sim11.png Graphic file (type png)
+ <use outlier_sim11.png>
+Package pdftex.def Info: outlier_sim11.png used on input line 33.
+(pdftex.def)             Requested size: 113.80992pt x 113.81102pt.
 
-<outlier_sim1.png, id=1, 542.77782pt x 166.37157pt>
-File: outlier_sim1.png Graphic file (type png)
- <use outlier_sim1.png>
-Package pdftex.def Info: outlier_sim1.png used on input line 35.
-(pdftex.def)             Requested size: 371.30363pt x 113.81102pt.
+<outlier_sim21.png, id=16, 401.5pt x 401.5pt>
+File: outlier_sim21.png Graphic file (type png)
+ <use outlier_sim21.png>
+Package pdftex.def Info: outlier_sim21.png used on input line 34.
+(pdftex.def)             Requested size: 113.80992pt x 113.81102pt.
 
-Overfull \hbox (26.30363pt too wide) in paragraph at lines 35--35
- [][] 
- []
+<outlier_sim12.png, id=17, 401.5pt x 401.5pt>
+File: outlier_sim12.png Graphic file (type png)
+ <use outlier_sim12.png>
+Package pdftex.def Info: outlier_sim12.png used on input line 35.
+(pdftex.def)             Requested size: 113.80992pt x 113.81102pt.
 
-<outlier_sim2.png, id=3, 545.78906pt x 164.11313pt>
-File: outlier_sim2.png Graphic file (type png)
- <use outlier_sim2.png>
-Package pdftex.def Info: outlier_sim2.png used on input line 42.
-(pdftex.def)             Requested size: 378.50198pt x 113.81102pt.
+<outlier_sim22.png, id=18, 401.5pt x 401.5pt>
+File: outlier_sim22.png Graphic file (type png)
+ <use outlier_sim22.png>
+Package pdftex.def Info: outlier_sim22.png used on input line 36.
+(pdftex.def)             Requested size: 113.80992pt x 113.81102pt.
 
-Overfull \hbox (33.50198pt too wide) in paragraph at lines 42--42
- [][] 
- []
+<outlier_sim13.png, id=19, 401.5pt x 401.5pt>
+File: outlier_sim13.png Graphic file (type png)
+ <use outlier_sim13.png>
+Package pdftex.def Info: outlier_sim13.png used on input line 37.
+(pdftex.def)             Requested size: 113.80992pt x 113.81102pt.
 
-<outlier_stackloss.png, id=4, 512.66531pt x 188.20313pt>
+<outlier_sim23.png, id=20, 401.5pt x 401.5pt>
+File: outlier_sim23.png Graphic file (type png)
+ <use outlier_sim23.png>
+Package pdftex.def Info: outlier_sim23.png used on input line 38.
+(pdftex.def)             Requested size: 113.80992pt x 113.81102pt.
+
+<outlier_sim14.png, id=21, 401.5pt x 401.5pt>
+File: outlier_sim14.png Graphic file (type png)
+ <use outlier_sim14.png>
+Package pdftex.def Info: outlier_sim14.png used on input line 39.
+(pdftex.def)             Requested size: 113.80992pt x 113.81102pt.
+
+<outlier_sim24.png, id=22, 401.5pt x 401.5pt>
+File: outlier_sim24.png Graphic file (type png)
+ <use outlier_sim24.png>
+Package pdftex.def Info: outlier_sim24.png used on input line 40.
+(pdftex.def)             Requested size: 113.80992pt x 113.81102pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<outlier_stackloss.png, id=23, 803.0pt x 301.125pt>
 File: outlier_stackloss.png Graphic file (type png)
 
 <use outlier_stackloss.png>
-Package pdftex.def Info: outlier_stackloss.png used on input line 51.
-(pdftex.def)             Requested size: 310.02657pt x 113.81102pt.
- <outlier_hbk.png, id=5, 512.66531pt x 185.94469pt>
+Package pdftex.def Info: outlier_stackloss.png used on input line 49.
+(pdftex.def)             Requested size: 303.5013pt x 113.81102pt.
+ <outlier_hbk.png, id=24, 803.0pt x 301.125pt>
 File: outlier_hbk.png Graphic file (type png)
 
 <use outlier_hbk.png>
-Package pdftex.def Info: outlier_hbk.png used on input line 58.
-(pdftex.def)             Requested size: 313.79707pt x 113.81102pt.
- [1
+Package pdftex.def Info: outlier_hbk.png used on input line 56.
+(pdftex.def)             Requested size: 303.5013pt x 113.81102pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 61.
+ ("C:\Study\LaTeX\MikTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 61.
 
-{C:/Users/Subho/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2 <C:/Stud
-y/My projects/Quantiles/MS/outlier_sim1.png> <C:/Study/My projects/Quantiles/MS
-/outlier_sim2.png>] [3 <C:/Study/My projects/Quantiles/MS/outlier_stackloss.png
-> <C:/Study/My projects/Quantiles/MS/outlier_hbk.png>]
+("C:\Study\My projects\Quantiles\MS\WPQoutliers.bbl" [2]) [3] [4 <C:/Study/My p
+rojects/Quantiles/MS/outlier_sim11.png> <C:/Study/My projects/Quantiles/MS/outl
+ier_sim21.png> <C:/Study/My projects/Quantiles/MS/outlier_sim12.png> <C:/Study/
+My projects/Quantiles/MS/outlier_sim22.png> <C:/Study/My projects/Quantiles/MS/
+outlier_sim13.png> <C:/Study/My projects/Quantiles/MS/outlier_sim23.png> <C:/St
+udy/My projects/Quantiles/MS/outlier_sim14.png> <C:/Study/My projects/Quantiles
+/MS/outlier_sim24.png>] [5 <C:/Study/My projects/Quantiles/MS/outlier_stackloss
+.png> <C:/Study/My projects/Quantiles/MS/outlier_hbk.png>]
 ("C:\Study\My projects\Quantiles\MS\WPQoutliers.aux") ) 
 Here is how much of TeX's memory you used:
- 3278 strings out of 493921
- 46911 string characters out of 3148084
- 111063 words of memory out of 3000000
- 6551 multiletter control sequences out of 15000+200000
- 8140 words of font info for 33 fonts, out of 3000000 for 9000
+ 3284 strings out of 493921
+ 46859 string characters out of 3148084
+ 108082 words of memory out of 3000000
+ 6558 multiletter control sequences out of 15000+200000
+ 7822 words of font info for 30 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,6n,38p,764b,295s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,6n,38p,1084b,295s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Study/LaTeX/MikTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmbx12.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/publi
@@ -325,9 +302,9 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Study/LaTeX/MikTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmti10.pfb><C:/Study/LaTeX/MikTeX 2.9/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on WPQoutliers.pdf (3 pages, 143104 bytes).
+Output written on WPQoutliers.pdf (5 pages, 172751 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
+ 82 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,42 @@
+\begin{thebibliography}{1}
+
+\bibitem{lof}
+M.M. Breunig, H.-P. Kriegel, R.T. Ng, and J.~Sander.
+\newblock L{O}{F}: {I}dentifying {D}ensity-{B}ased {L}ocal {O}utliers.
+\newblock In {\em Proceedings of the 2000 ACM SIGMOD International Conference
+  on Management of Data}, pages 93--104. SIGMOD, 2000.
+
+\bibitem{stackloss}
+K.A. Brownlee.
+\newblock {\em Statistical Theory and Methodology in Science and Engineering}.
+\newblock Wiley, New York, NY, 1960, 2nd ed. 1965.
+
+\bibitem{chen09}
+Y.~Chen, X.~Dang, H.~Peng, and H.L.~Bart Jr.
+\newblock Outlier detection with the kernelized spatial depth function.
+\newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}, 31-2:288--305, 2009.
+
+\bibitem{dang10}
+X.~Dang and R.~Serfling.
+\newblock Nonparametric {D}epth-{B}ased {M}ultivariate {O}utlier {I}dentifiers,
+  and {M}asking {R}obustness {P}roperties.
+\newblock {\em J. Statist. Plan. and Inf.}, 140:782--801, 2010.
+
+\bibitem{hadi92}
+A.S. Hadi.
+\newblock Identifying {M}ultiple {O}utliers in {M}ultivariate {D}ata.
+\newblock {\em J. Royal Stat. Soc. Ser. B}, 54-3:761--771, 1992.
+
+\bibitem{hbk}
+D.M. Hawkins, D.~Bradu, and G.V. Kass.
+\newblock Location of several outliers in multiple regression data using
+  elemental sets.
+\newblock {\em Technometrics}, 26:197--208, 1984.
+
+\bibitem{hoeting96}
+J.~Hoeting, A.E. Raftery, and D.~Madigan.
+\newblock A method for simultaneous variable selection and outlier
+  identification in linear regression.
+\newblock {\em Comput. Statist. and Data Anal.}, 22:251--270, 1996.
+
+\end{thebibliography}

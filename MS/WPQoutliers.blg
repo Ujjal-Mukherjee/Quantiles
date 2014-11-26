@@ -1,5 +1,8 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: WPQoutliers.aux
-I found no \citation commands---while reading file WPQoutliers.aux
-I found no \bibdata command---while reading file WPQoutliers.aux
-I found no \bibstyle command---while reading file WPQoutliers.aux
-(There were 3 error messages)
+The style file: plain.bst
+Database file #1: outlierbib.bib
+Name 2 in "Hawkins, D.M. and D. Bradu, and G.V. Kass" has a comma at the end for entry hbk
+while executing---line 1049 of file plain.bst
+Name 2 in "Hawkins, D.M. and D. Bradu, and G.V. Kass" has a comma at the end for entry hbk
+while executing---line 1090 of file plain.bst
+(There were 2 error messages)
