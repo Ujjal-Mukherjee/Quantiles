@@ -400,7 +400,7 @@ using namespace Rcpp;
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
 
-double ProjQuantileDepth(NumericMatrix dx, NumericVector ux, float k){
+double ProjQuantileDepthMod(NumericMatrix dx, NumericVector ux, float k){
 
 	arma::colvec u(ux.begin(), ux.size(), false);
 	arma::mat d(dx.begin(), dx.nrow(), dx.ncol(), false);

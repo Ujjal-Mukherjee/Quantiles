@@ -429,7 +429,75 @@ double ProjQuantileDepthMod(NumericMatrix dx, NumericVector ux, float k){
 
 }
 
+/********************************************************************************************************
+ *<wpq> Generates a weighted projection quantile along a vector    *
+ * v2: Normal kernel weight *
+ ********************************************************************************************************/
+using namespace Rcpp;
 
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+
+
+arma::colvec wpq(NumericMatrix dx, NumericVector ux, float sigma){
+
+	arma::colvec u(ux.begin(), ux.size(), false);
+	arma::mat d(dx.begin(), dx.nrow(), dx.ncol(), false);
+
+	double Normu = std::inner_product(u.begin(),u.end(),u.begin(),0.0);
+	arma::colvec U = u/sqrt(Normu);
+
+	arma::colvec P = d*U;
+
+	arma::mat Pu = P*arma::strans(U);
+    arma::mat P_Ortho = d-Pu;
+	arma::mat P_Ortho_Sq = arma::pow(P_Ortho,2);
+	arma::colvec P_Ortho_Norm = P_Ortho_Sq*arma::ones(dx.ncol());
+	arma::colvec P_prop = P_Ortho_Norm % (1/(P_Ortho_Norm + P%P));
+	//arma::colvec w = exp(-(P_prop) / (2*sigma*sigma) ) / (sqrt(2*PI)*sigma);
+	//arma::colvec w = 1/(PI*(sigma+P_prop/sigma));
+	arma::colvec w = sigma*exp( -sigma*sqrt(P_prop) );
+
+	arma::colvec wP_sorted = arma::sort(w%P, "ascend");
+
+	double alpha = (1+sqrt(Normu))/2;
+
+	int pos = abs(alpha*wP_sorted.size()-1);
+	arma::colvec wProjQuant = U*wP_sorted[pos];
+
+	return wProjQuant;
+}
+
+/**************************************************************************************************
+ *<ProjQuantNorm> Generate a complete projection quantile profile from a cartesian vector. Calls <wpq>.*
+  * v2: Normal kernel weight *
+ **************************************************************************************************/
+using namespace Rcpp;
+
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+
+
+arma::Mat<double> ProjQuantNorm(NumericMatrix dx, NumericVector ux, float sigma, int n){
+
+	arma::mat um = genU(n, ux);
+
+	arma::Mat<double> Quantiles(n,ux.size());
+
+	for(int i=0; i<n; i++){
+
+
+		ux[0] = um(i,0);
+		ux[1] = um(i,1);
+
+		arma::colvec temp = wpq(dx, ux, sigma);
+		Quantiles(i,0) = temp[0];
+		Quantiles(i,1) = temp[1];
+
+	}
+
+	return Quantiles;
+}
 
 
 
