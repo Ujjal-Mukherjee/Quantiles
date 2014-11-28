@@ -456,7 +456,7 @@ arma::colvec wpq(NumericMatrix dx, NumericVector ux, float sigma){
 	arma::colvec P_prop = P_Ortho_Norm % (1/(P_Ortho_Norm + P%P));
 	//arma::colvec w = exp(-(P_prop) / (2*sigma*sigma) ) / (sqrt(2*PI)*sigma);
 	//arma::colvec w = 1/(PI*(sigma+P_prop/sigma));
-	arma::colvec w = sigma*exp( -sigma*sqrt(P_prop) );
+	//arma::colvec w = sigma*exp( -sigma*sqrt(P_prop) );
 
 	arma::colvec wP_sorted = arma::sort(w%P, "ascend");
 

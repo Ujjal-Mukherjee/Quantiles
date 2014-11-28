@@ -52,12 +52,12 @@ plot(pd.vec, pqd.vec, type="l", lwd=2,
 # Bivariate normal mixture
 sig = matrix(c(1,.5,.5,1), nrow=2)
 sig2 = matrix(c(1,-.5,-.5,1), nrow=2)
-X1 = my.mvrnorm(500, mu=c(3,0), Sigma=sig)
-X2 = my.mvrnorm(500, mu=c(-3,0), Sigma=sig2)
+X1 = my.mvrnorm(500, mu=c(-2,-6), Sigma=sig)
+X2 = my.mvrnorm(500, mu=c(-10,-6), Sigma=sig2)
 X = rbind(X1,X2)
 
 # define grid of points
-pts = seq(-5,5,by=.5)
+pts = seq(-11,-1,by=.2)
 lengrid = length(pts)
 xcoord = rep(pts, rep(lengrid,lengrid))
 ycoord = rep(pts, lengrid)
@@ -65,12 +65,21 @@ xygrid = cbind(xcoord,ycoord)
 rm(xcoord,ycoord)
 
 # my PQD
+sig=1
+
 npt = dim(xygrid)[1]
-Fuxu.mat = matrix(0, nrow=npt, ncol=100)
-for(iu in 1:100){
+Fuxu.mat = matrix(0, nrow=npt, ncol=1000)
+for(iu in 1:1000){
   u = rnorm(2); u = u/sqrt(sum(u^2))
-  uecdf = ecdf(X%*%u)
-  Fuxu.mat[,iu] = uecdf(xygrid%*%u)
+  Xu = X%*%u
+  Xuperp = sqrt(apply(X^2,1,sum) - Xu^2)
+  w = 2*dnorm(Xuperp, sd=sig)
+  #w = dcauchy(Xuperp, scale=sig)
+  uecdf = ecdf(w*Xu)
+  xygrid.u = xygrid%*%u
+  wu = 2*dnorm(sqrt(apply(xygrid^2,1,sum) - xygrid.u^2), sd=sig)
+  #wu = dcauchy(sqrt(apply(xygrid^2,1,sum) - xygrid.u^2), scale=sig)
+  Fuxu.mat[,iu] = uecdf(wu*xygrid.u)
 }
 EPQD.vec = 1/(1+apply(abs(Fuxu.mat-.5), 1, max))
 

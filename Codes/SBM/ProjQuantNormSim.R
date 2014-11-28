@@ -44,15 +44,15 @@ X32 = my.mvrnorm(2e3, mu=c(-1,0), Sigma=.3*sig2)
 X3 = rbind(X31,X32)
 
 # BVN mixture
-X41 = my.mvrnorm(5e3, mu=c(2,0), Sigma=sig)
-X42 = my.mvrnorm(2e3, mu=c(-1,0), Sigma=.5*sig2)
+X41 = my.mvrnorm(5e2, mu=c(2,0), Sigma=sig)
+X42 = my.mvrnorm(2e2, mu=c(-1,0), Sigma=.5*sig2)
 X4 = rbind(X41,X42)
 
-X4.pq = ProjQuant(X2, c(0,.5), 1000)
-X4.pq = WtProjQuantProfile(X2, c(0,.9), 1000, 100, 0.5, 0.1, 0.9)
-X4.wpqnorm = ProjQuantNorm(X2, c(0,.9), 2.3, 1000)
+X4.pq = ProjQuant(X4, c(0,.5), 1000)
+X4.pq = WtProjQuantProfile(X4, c(0,.9), 1000, 100, 0.5, 0.1, 0.9)
+X4.wpqnorm = ProjQuantNorm(X4, c(0,.9), 2, 1000)
 
-plot(X2, pch=19, cex=.1, col=adjustcolor("black", alpha.f=.3),
+plot(X4, pch=19, cex=.1, col=adjustcolor("black", alpha.f=.3),
      main="Bivariate Normal mixture", xlab="X1", ylab="X2")
 
 lines(X4.pq)
