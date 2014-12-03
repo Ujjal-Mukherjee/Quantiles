@@ -50,10 +50,11 @@ plot(pd.vec, pqd.vec, type="l", lwd=2,
 
 ## Empirically calculate PQD with grid search
 # Bivariate normal mixture
+set.seed(120214)
 sig = matrix(c(1,.5,.5,1), nrow=2)
-sig2 = matrix(c(1,-.5,-.5,1), nrow=2)
-X1 = my.mvrnorm(500, mu=c(-2,-6), Sigma=sig)
-X2 = my.mvrnorm(500, mu=c(-10,-6), Sigma=sig2)
+sig2 = matrix(c(1,-.9,-.9,1), nrow=2)
+X1 = my.mvrnorm(500, mu=c(-9,-3), Sigma=sig)
+X2 = my.mvrnorm(500, mu=c(-4,-8), Sigma=sig)
 X = rbind(X1,X2)
 
 # define grid of points
@@ -73,11 +74,11 @@ for(iu in 1:1000){
   u = rnorm(2); u = u/sqrt(sum(u^2))
   Xu = X%*%u
   Xuperp = sqrt(apply(X^2,1,sum) - Xu^2)
-  w = 2*dnorm(Xuperp, sd=sig)
+  w = dnorm(Xuperp, sd=sig)
   #w = dcauchy(Xuperp, scale=sig)
   uecdf = ecdf(w*Xu)
   xygrid.u = xygrid%*%u
-  wu = 2*dnorm(sqrt(apply(xygrid^2,1,sum) - xygrid.u^2), sd=sig)
+  wu = dnorm(sqrt(apply(xygrid^2,1,sum) - xygrid.u^2), sd=sig)
   #wu = dcauchy(sqrt(apply(xygrid^2,1,sum) - xygrid.u^2), scale=sig)
   Fuxu.mat[,iu] = uecdf(wu*xygrid.u)
 }
