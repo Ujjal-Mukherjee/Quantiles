@@ -9,7 +9,7 @@ library(RcppEigen)
 library(ellipse)
 
 ## cpp source file
-sourceCpp("ProjQuantile.cpp", verbose=TRUE, rebuild=FALSE);
+sourceCpp("ProjQuantNew.cpp", verbose=TRUE, rebuild=FALSE);
 
 ## function to generate from multivariate normal
 my.mvrnorm = function(n, mu, Sigma){

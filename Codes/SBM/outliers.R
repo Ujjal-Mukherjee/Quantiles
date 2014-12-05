@@ -8,7 +8,7 @@ library(RcppArmadillo)
 library(RcppEigen)
 library(fda.usc)
 
-sourceCpp("ProjQuantNew.cpp", verbose=TRUE, rebuild=FALSE);
+sourceCpp("ProjQuantNew1.cpp", verbose=TRUE, rebuild=TRUE);
 
 ## function for empirical PQD
 EPQD = function(X, xx){
@@ -39,7 +39,7 @@ outlier.score = function(X, type, k=NULL, alpha){
   # get depth and knn average dist for all data
   for(i in 1:n){
     if(type==1){
-      depth.vec[i] = ProjQuantileDepthMod(X[-i,], X[i,], .5)
+      depth.vec[i] = KernelDepthMod(X[-i,], X[i,], .5)
     }      
     else{
       depth.vec[i] = EPQD(X[-i,], X[i,])
@@ -50,7 +50,7 @@ outlier.score = function(X, type, k=NULL, alpha){
   }
   
   lknn = log(knn.vec)
-  lhtped = -log(depth.vec)
+  lhtped = (depth.vec)
   
   return(alpha*lknn + (1-alpha)*lhtped)
 }
@@ -64,7 +64,7 @@ Xa = rbind(X1,X2)
 cols = c(rep("darkgreen",475), rep("darkred", 25))
 
 # writeup plots
-score1 = outlier.score(Xa, type=1, alpha=.05)
+score1 = outlier.score(Xa, type=1, alpha=0)
 score2 = outlier.score(Xa, type=1, alpha=.5)
 score3 = outlier.score(Xa, type=1, alpha=.95)
 cols = c(rep("green",475), rep("red", 25))

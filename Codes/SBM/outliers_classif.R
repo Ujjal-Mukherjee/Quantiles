@@ -15,7 +15,7 @@ library(RcppArmadillo)
 library(RcppEigen)
 library(fda.usc)
 
-sourceCpp("ProjQuantNew.cpp", verbose=TRUE, rebuild=FALSE);
+sourceCpp("ProjQuantNew1.cpp", verbose=TRUE, rebuild=FALSE);
 
 ## function to compute outlier score
 outlier.score = function(X, k=NULL, alpha){

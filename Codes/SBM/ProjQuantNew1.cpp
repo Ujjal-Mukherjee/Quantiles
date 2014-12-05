@@ -391,16 +391,87 @@ Rcpp::NumericVector WtProjQuantProfileMod(NumericMatrix dx, NumericVector ux, fl
 }
 
 
+
+
 /********************************************************************************************************
- *<ProjQuantileDepthMod> Generates a weighted projection quantile profile along a polar coordinate vector.*
- * Tunnel version *
+ *<WtProjQuantProfileMod> Generates a weighted projection quantile profile along a polar coordinate vector.*
  ********************************************************************************************************/
+
 using namespace Rcpp;
 
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
 
-double ProjQuantileDepthMod(NumericMatrix dx, NumericVector ux, float k){
+double WECDF(NumericVector px, NumericVector wx, float k){
+
+
+	arma::colvec p(px.begin(), px.size(), false);
+	arma::colvec w(wx.begin(), wx.size(), false);
+
+	arma::uvec p_sort = arma::find(p<=k);
+
+	arma::colvec ps = p(p_sort);
+
+	arma::colvec ws = w(p_sort);
+
+	double prob = arma::sum(ws)/arma::sum(w);
+
+	return prob;
+
+}
+
+
+/********************************************************************************************************
+ *<WtProjQuantProfileMod> Generates a weighted projection quantile profile along a polar coordinate vector.*
+ ********************************************************************************************************/
+
+using namespace Rcpp;
+
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+
+double InvWECDF(NumericVector px, NumericVector wx, double k){
+
+
+	arma::colvec p(px.begin(), px.size(), false);
+	arma::colvec w(wx.begin(), wx.size(), false);
+
+	arma::uvec p_sort = arma::sort_index(p,"ascend");
+
+	arma::colvec ps = p(p_sort);
+
+	arma::colvec ws = w(p_sort);
+
+	double diff = k - ws[1]/arma::sum(ws);
+
+	int i = 0;
+
+	while(diff>=0){
+
+		i++;
+		diff = diff - ws[i]/arma::sum(ws);
+
+	}
+
+	double q = (ps[i]+ps[i-1])/2;
+
+	return q;
+
+}
+
+
+
+/********************************************************************************************************
+ *<WtProjQuantProfileMod> Generates a weighted projection quantile profile along a polar coordinate vector.*
+ ********************************************************************************************************/
+
+using namespace Rcpp;
+
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+
+arma::colvec GaussianKernel(NumericMatrix dx, NumericVector ux, double h){
+
 
 	arma::colvec u(ux.begin(), ux.size(), false);
 	arma::mat d(dx.begin(), dx.nrow(), dx.ncol(), false);
@@ -408,16 +479,173 @@ double ProjQuantileDepthMod(NumericMatrix dx, NumericVector ux, float k){
 	double Normu = std::inner_product(u.begin(),u.end(),u.begin(),0.0);
 	arma::colvec U = u/sqrt(Normu);
 
-	arma::colvec ux1 = 0.9*(U);
+	arma::colvec P = d*U;
+
+	arma::mat Pu = P*arma::strans(U);
+
+	arma::mat P_Ortho = d-Pu;
+
+	arma::mat P_Ortho_Sq = arma::pow(P_Ortho,2);
+
+	arma::colvec P_Ortho_Norm = P_Ortho_Sq*arma::ones(dx.ncol());
+
+	arma::colvec weights = (1/sqrt(2*PI*h))*arma::exp(-P_Ortho_Norm/(2*h));
+
+	return weights;
+
+
+}
+
+
+/********************************************************************************************************
+ *<WtProjQuantProfileMod> Generates a weighted projection quantile profile along a polar coordinate vector.*
+ ********************************************************************************************************/
+
+using namespace Rcpp;
+
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+
+arma::colvec KernelProjQuant(NumericMatrix dx, NumericVector ux, double h){
+
+
+	arma::colvec u(ux.begin(), ux.size(), false);
+	arma::mat d(dx.begin(), dx.nrow(), dx.ncol(), false);
+
+	double Normu = std::inner_product(u.begin(),u.end(),u.begin(),0.0);
+	arma::colvec U = u/sqrt(Normu);
+
+	double alpha = (1+sqrt(Normu))/2;
+
+	arma::colvec P = d*U;
+
+	arma::colvec w = GaussianKernel(dx, ux, h);
+
+	double q = InvWECDF(Rcpp::wrap(P), Rcpp::wrap(w), alpha);
+
+	arma::colvec qvec = q*U;
+
+	return qvec;
+
+
+}
+
+
+/********************************************************************************************************
+ *<WtProjQuantProfileMod> Generates a weighted projection quantile profile along a polar coordinate vector.*
+ ********************************************************************************************************/
+
+using namespace Rcpp;
+
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+
+Rcpp::NumericMatrix KernelProjQuantProfile(NumericMatrix dx, NumericVector ux, double h, int n){
+
+	arma::mat um = genU(n, ux);
+
+	arma::Mat<double> Quantiles(n,ux.size());
+
+	for(int i=0; i<n; i++){
+
+		Rcpp::NumericVector u = Rcpp::wrap(arma::strans(um.row(i)));
+		Rcpp::NumericVector Quant = Rcpp::wrap(arma::strans(KernelProjQuant(dx, u, h)));
+		Quantiles.row(i) = Rcpp::as<arma::rowvec>(Quant);
+
+	}
+
+	return Rcpp::wrap(Quantiles);
+
+
+}
+
+/********************************************************************************************************
+ *<WtProjQuantProfileMod> Generates a weighted projection quantile profile along a polar coordinate vector.*
+ ********************************************************************************************************/
+
+using namespace Rcpp;
+
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+
+double ECDF(NumericVector px, float k){
+
+
+	arma::colvec p(px.begin(), px.size(), false);
+
+	arma::uvec p_sort = arma::find(p<=k);
+
+	arma::colvec ps = p(p_sort);
+
+	double ps_len = ps.n_elem;
+
+	double p_len = p.n_elem;
+
+	double prob = ps_len/p_len;
+
+	return prob;
+
+}
+
+
+/********************************************************************************************************
+ *<WtProjQuantProfileMod> Generates a weighted projection quantile profile along a polar coordinate vector.*
+ ********************************************************************************************************/
+
+using namespace Rcpp;
+
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+
+double DataDepthECDF(NumericMatrix dx, NumericVector ux){
+
+	arma::colvec u(ux.begin(), ux.size(), false);
+	arma::mat d(dx.begin(), dx.nrow(), dx.ncol(), false);
+
+	int k = dx.ncol();
+
+	double dep = 1;
+
+	for(int i=0; i<k; i++){
+
+		arma::colvec temp = d.col(i);
+
+		double Fx = ECDF(Rcpp::wrap(temp), u(i));
+		dep = dep*Fx*(1-Fx);
+
+	}
+
+	return dep;
+
+}
+
+/********************************************************************************************************
+ *<WtProjQuantProfileMod> Generates a weighted projection quantile profile along a polar coordinate vector.*
+ ********************************************************************************************************/
+
+ using namespace Rcpp;
+
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+
+double KernelDepthMod(NumericMatrix dx, NumericVector ux, double k){
+
+	arma::colvec u(ux.begin(), ux.size(), false);
+	arma::mat d(dx.begin(), dx.nrow(), dx.ncol(), false);
+
+	double Normu = std::inner_product(u.begin(),u.end(),u.begin(),0.0);
+	arma::colvec U = u/sqrt(Normu);
+
+	arma::colvec ux1 = 0.5*(U);
 	arma::colvec ux2 = 0.95*(U);
 
-	arma::colvec Q1 = WtProjQuantMod(dx, Rcpp::wrap(ux1), k);
-	arma::colvec Q2 = WtProjQuantMod(dx, Rcpp::wrap(ux2), k);
+	arma::colvec Q1 = KernelProjQuant(dx, Rcpp::wrap(ux1), k);
+	arma::colvec Q2 = KernelProjQuant(dx, Rcpp::wrap(ux2), k);
 
 	double norml1 = std::inner_product(Q1.begin(), Q1.end(), Q1.begin(), 0.0);
 	double norml2 = std::inner_product(Q2.begin(), Q2.end(), Q2.begin(), 0.0);
 
-	double alpha1 = (1.0+0.9)/2;
+	double alpha1 = (1.0+0.5)/2;
 	double alpha2 = (1.0+0.95)/2;
 
 	double y1 = -log(1.0-alpha1);
@@ -429,99 +657,12 @@ double ProjQuantileDepthMod(NumericMatrix dx, NumericVector ux, float k){
 
     double y = (x-x2)/(x2-x1)*(y2-y1)+y2;
 
-	/*double beta = alpha * Normu/norml;*/
+	//double beta = alpha * Normu/norml;
 
 	double beta = -exp(-y)+1;
 
 	double Depth = exp(-fabs(beta-0.5));
 
-	return Depth;
+	return beta;
 
 }
-
-/********************************************************************************************************
- *<wpq> Generates a weighted projection quantile along a vector    *
- * v2: Normal kernel weight *
- ********************************************************************************************************/
-using namespace Rcpp;
-
-// [[Rcpp::depends(RcppArmadillo)]]
-// [[Rcpp::export]]
-
-
-arma::colvec wpq(NumericMatrix dx, NumericVector ux, float sigma){
-
-	arma::colvec u(ux.begin(), ux.size(), false);
-	arma::mat d(dx.begin(), dx.nrow(), dx.ncol(), false);
-
-	double Normu = std::inner_product(u.begin(),u.end(),u.begin(),0.0);
-	arma::colvec U = u/sqrt(Normu);
-
-	arma::colvec P = d*U;
-
-	arma::mat Pu = P*arma::strans(U);
-    arma::mat P_Ortho = d-Pu;
-	arma::mat P_Ortho_Sq = arma::pow(P_Ortho,2);
-	arma::colvec P_Ortho_Norm = P_Ortho_Sq*arma::ones(dx.ncol());
-	arma::colvec P_prop = P_Ortho_Norm % (1/(P_Ortho_Norm + P%P));
-	arma::colvec w = exp(-(P_prop) / (2*sigma*sigma) ) / (sqrt(2*PI)*sigma);
-	//arma::colvec w = 1/(PI*(sigma+P_prop/sigma));
-	//arma::colvec w = sigma*exp( -sigma*sqrt(P_prop) );
-
-	arma::colvec wP_sorted = arma::sort(w%P, "ascend");
-
-	double alpha = (1+sqrt(Normu))/2;
-
-	int pos = abs(alpha*wP_sorted.size()-1);
-	arma::colvec wProjQuant = U*wP_sorted[pos];
-
-	return wProjQuant;
-}
-
-/**************************************************************************************************
- *<ProjQuantNorm> Generate a complete projection quantile profile from a cartesian vector. Calls <wpq>.*
-  * v2: Normal kernel weight *
- **************************************************************************************************/
-using namespace Rcpp;
-
-// [[Rcpp::depends(RcppArmadillo)]]
-// [[Rcpp::export]]
-
-
-arma::Mat<double> ProjQuantNorm(NumericMatrix dx, NumericVector ux, float sigma, int n){
-
-	arma::mat um = genU(n, ux);
-
-	arma::Mat<double> Quantiles(n,ux.size());
-
-	for(int i=0; i<n; i++){
-
-
-		ux[0] = um(i,0);
-		ux[1] = um(i,1);
-
-		arma::colvec temp = wpq(dx, ux, sigma);
-		Quantiles(i,0) = temp[0];
-		Quantiles(i,1) = temp[1];
-
-	}
-
-	return Quantiles;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
