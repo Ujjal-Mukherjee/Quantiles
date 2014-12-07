@@ -17,9 +17,19 @@ my.mvrnorm = function(n, mu, Sigma){
   return(sample.matrix)
 }
 
+ones = function(m,n){
+  matrix(1, nrow=m, ncol=n)
+}
+
 ## function to calculate weighted projection quantile depth
 wEPQD = function(X, sig, mingrid, maxgrid, res=.2, nu=1e3){
   
+  # find scaling mean and cov
+  b = colMeans(X)
+  AtA = cov(X)
+  AtA.inv = solve(cov(X))
+  X0 = (X-b) %*% AtA.inv
+    
   # make grid of points
   pts = seq(mingrid, maxgrid, by=res)
   lengrid = length(pts)
@@ -27,27 +37,34 @@ wEPQD = function(X, sig, mingrid, maxgrid, res=.2, nu=1e3){
   ycoord = rep(pts, lengrid)
   xygrid = cbind(xcoord,ycoord)
   rm(xcoord,ycoord)
-  
+  grid0 = (xygrid - b) %*% AtA.inv
+    
   ## get matrix of weighted PQDs for all points
   npt = dim(xygrid)[1]
   Fuxu.mat = matrix(0, nrow=npt, ncol=nu)
-  normsq.X = apply(X^2,1,sum)
-  normsq.grid = apply(xygrid^2,1,sum)
+  
+  normsq.X0 = apply(X0^2, 1, sum)
+  normsq.grid0 = apply(grid0^2, 1, sum)
   
   # loop over nu pts on unit circle then take max
   for(iu in 1:nu){
-    u = rnorm(2); u = u/sqrt(sum(u^2))
-    Xu = X%*%u
-    Xuperp = sqrt(normsq.X - Xu^2)
-    mu.Xuperp = mean(Xuperp)
-    w = dnorm(Xuperp, sd=sig)
-    #w = dcauchy(Xuperp, scale=sig)
-    uecdf = ecdf(w*Xu)
+    u = as.matrix(rnorm(2)); u = u/sqrt(sum(u^2))
+    I.minus.Pu = diag(2) - u%*%t(u)
+    perp.mean = I.minus.Pu %*% b
+    perp.cov = I.minus.Pu %*% AtA %*% I.minus.Pu
     
-    xygrid.u = xygrid%*%u
-    wu = dnorm(sqrt(normsq.grid - xygrid.u^2), sd=sig)
+    Xuperp = X %*% I.minus.Pu
+    bperp = b %*% I.minus.Pu
+    scaled.perp = sqrt(Xuperp^2 %*% ones(ncol(X),1))
+    w = dnorm(scaled.perp, sd=sig)
+    #w = dcauchy(Xuperp, scale=sig)
+    uecdf = ecdf(w * (X%*%u))
+    
+    gridperp = xygrid %*% I.minus.Pu
+    scaled.gridperp = sqrt(gridperp^2 %*% ones(ncol(X),1))
+    wu = dnorm(scaled.gridperp, sd=sig)
     #wu = dcauchy(sqrt(apply(xygrid^2,1,sum) - xygrid.u^2), scale=sig)
-    Fuxu.mat[,iu] = uecdf(wu*xygrid.u)
+    Fuxu.mat[,iu] = uecdf(wu * (xygrid%*%u))
   }
   EPQD.vec = 1/(1+apply(abs(Fuxu.mat-.5), 1, max))
   
@@ -79,16 +96,15 @@ wEPQD = function(X, sig, mingrid, maxgrid, res=.2, nu=1e3){
 set.seed(120214)
 sig = matrix(c(1,.9,.9,1), nrow=2)
 sig2 = matrix(c(1,-.9,-.9,1), nrow=2)
-X1 = my.mvrnorm(500, mu=c(-8,-8), Sigma=sig)
-X2 = my.mvrnorm(500, mu=c(-10,-4), Sigma=sig)
+X1 = my.mvrnorm(500, mu=c(2,7), Sigma=sig)
+X2 = my.mvrnorm(500, mu=c(6,2), Sigma=sig)
 X = rbind(X1,X2)
 
-d<-apply(X,2,FUN=function(x){return((x-mean(x))/max(x))});
-z = WtProjQuantProfileMod(d,c(0,.9),.1, 1000)
-plot(d)
-lines(z)
+# z = WtProjQuantProfileMod(d,c(0,.9),.1, 1000)
+# plot(d)
+# lines(z)
 
-k = wEPQD(X, sig=1, mingrid=-15, maxgrid=-3)
+k = wEPQD(X, sig=1, mingrid=-2, maxgrid=10)
 
 # naive PQD
 sig=.5
