@@ -448,7 +448,7 @@ double InvWECDF(NumericVector px, NumericVector wx, double k){
 
 	arma::uvec ind = arma::sort_index(wsc);
 
-	arma::colvec InvSort = ps(ind);
+	arma::colvec InvSort = ps(ind);	
 
 	double q = InvSort[1];
 
@@ -660,6 +660,6 @@ double KernelDepthMod(NumericMatrix dx, NumericVector ux, double k){
 
 	double Depth = exp(-fabs(beta-0.5));
 
-	return Depth;
+	return beta;
 
 }

@@ -10,19 +10,6 @@ library(fda.usc)
 
 sourceCpp("ProjQuantNew1.cpp", verbose=TRUE, rebuild=TRUE);
 
-## function for empirical PQD
-EPQD = function(X, xx){
-  p = ncol(X)
-  Fuxu.vec = rep(0,100)
-  
-  for(iu in 1:100){
-    u = runif(p,-1,1); u = u/sqrt(sum(u^2))
-    uecdf = ecdf(X%*%u)
-    Fuxu.vec[iu] = uecdf(xx%*%u)
-  }
-  1/(1+max(abs(Fuxu.vec-.5)))
-}
-
 ## function to compute outlier score
 outlier.score = function(X, type, k=NULL, alpha){
   n = nrow(X)
@@ -39,7 +26,7 @@ outlier.score = function(X, type, k=NULL, alpha){
   # get depth and knn average dist for all data
   for(i in 1:n){
     if(type==1){
-      depth.vec[i] = KernelDepthMod(X[-i,], X[i,], .5)
+      depth.vec[i] = KernelDepthMod(X[-i,], X[i,], .2)
     }      
     else{
       depth.vec[i] = EPQD(X[-i,], X[i,])
@@ -50,7 +37,7 @@ outlier.score = function(X, type, k=NULL, alpha){
   }
   
   lknn = log(knn.vec)
-  lhtped = (depth.vec)
+  lhtped = -log(depth.vec)
   
   return(alpha*lknn + (1-alpha)*lhtped)
 }
@@ -64,7 +51,7 @@ Xa = rbind(X1,X2)
 cols = c(rep("darkgreen",475), rep("darkred", 25))
 
 # writeup plots
-score1 = outlier.score(Xa, type=1, alpha=0)
+score1 = outlier.score(Xa, type=1, alpha=.05)
 score2 = outlier.score(Xa, type=1, alpha=.5)
 score3 = outlier.score(Xa, type=1, alpha=.95)
 cols = c(rep("green",475), rep("red", 25))
