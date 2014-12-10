@@ -1,4 +1,4 @@
-## Initial simulations of Projection quantile depth and comparisions with projection depth
+## PQDSim: Initial simulations of Projection quantile depth and comparisions with projection depth
 
 ## Functions
 ## function to generate from multivariate normal
