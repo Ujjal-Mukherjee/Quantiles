@@ -105,12 +105,16 @@ k2 = wEPQD(X %*% O, sig=m, mingrid=-5*m, maxgrid=5*m, res=.2*m)
 max(abs(k1-k2), na.rm=T)
 
 # naive PQD
-sig=.2
+sig=.02
 
 b = apply(X, 2, median)
 X0 = X - ones(nrow(X),1) %*% b
 
 # make grid of points
+mingrid=-5
+maxgrid=5
+res=.2
+
 pts = seq(mingrid, maxgrid, by=res)
 lengrid = length(pts)
 xcoord = rep(pts, rep(lengrid,lengrid))
@@ -119,8 +123,6 @@ xygrid = cbind(xcoord,ycoord)
 rm(xcoord,ycoord)
 grid0 = xygrid - ones(nrow(xygrid),1) %*% b
 
-mingrid=-5
-maxgrid=5
 
 npt = dim(xygrid)[1]
 EPQD.vec = rep(0, npt)
