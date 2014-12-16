@@ -79,3 +79,17 @@ plot(d1[,101], col=col.vec, pch=19)
 
 system.time(d2 <- wEPQD1(Xb, X, sig=1))
 plot(d2[,101], col=col.vec, pch=19)
+
+## colon data
+require(cepp)
+data(Colon)
+
+col.vec = ifelse(Colon$Y==1, "red", "green")
+p = ncol(Colon$X)
+X1 = Colon$X[which(Colon$Y==1),]
+X2 = Colon$X[which(Colon$Y==2),]
+d1 = wEPQD1(X1, Colon$X, sig=400, nu=100)
+d2 = wEPQD1(X2, Colon$X, sig=400, nu=100)
+
+plot(d1[,p+1], d2[,p+1], col=col.vec, pch=19)
+abline(0,1,lty=2, lwd=2)
