@@ -48,6 +48,7 @@ set.seed(11182014)
 X1 = matrix(rnorm(950), ncol=2)
 X2 = matrix(rnorm(50)+10, ncol=2)
 Xa = rbind(X1,X2)
+Xa = scale(Xa)
 cols = c(rep("darkgreen",475), rep("darkred", 25))
 
 # writeup plots
@@ -70,6 +71,7 @@ X1 = matrix(rnorm(950), ncol=2)
 X2 = matrix(rnorm(50)+sample(c(6:10, -10:-6), 50, replace=T), ncol=2)
 label.vec = c(rep("1",475), rep("2", 25))
 Xb = rbind(X1,X2)
+Xb = scale(Xb)
 cols = c(rep("darkgreen",475), rep("darkred", 25))
 
 # writeup plots
@@ -100,14 +102,8 @@ par(mfrow=c(2,2))
 plot(lm(stack.loss~., data=stackloss))
 par(mfrow=c(1,1))
 
-score.vec = outlier.score(as.matrix(stackloss[,-4]),
-                          type=1, alpha=.8)
-
-plot(score.vec, pch=19, cex=.5)
-abline(h=quantile(score.vec,.9), lty=2, lwd=2)
-
 # writeup plots
-X = as.matrix(stackloss[,-4])
+X = scale(as.matrix(stackloss[,-4]))
 score1 = outlier.score(X, type=1, alpha=.05)
 score2 = outlier.score(X, type=1, alpha=.5)
 score3 = outlier.score(X, type=1, alpha=.95)
@@ -122,15 +118,7 @@ plot(score3, pch=19, cex=.8,
 par(mfrow=c(1,1))
 
 # hawkins bradu kass data
-require(robustbase)
-
-score.vec = outlier.score(as.matrix(hbk[,-4]),
-                          type=1, alpha=.2)
-plot(score.vec, pch=19, cex=.5)
-#abline(h=quantile(score.vec,.9), lty=2, lwd=2)
-
-# writeup plots
-X = as.matrix(hbk[,-4])
+X = scale(as.matrix(hbk[,-4]))
 score1 = outlier.score(X, type=1, alpha=.05)
 score2 = outlier.score(X, type=1, alpha=.5)
 score3 = outlier.score(X, type=1, alpha=.95)

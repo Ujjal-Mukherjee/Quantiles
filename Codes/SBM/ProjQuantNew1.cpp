@@ -630,13 +630,10 @@ double KernelDepthMod(NumericMatrix dx, NumericVector ux, double k){
 	arma::colvec u(ux.begin(), ux.size(), false);
 	arma::mat d(dx.begin(), dx.nrow(), dx.ncol(), false);
 
-	double Normu = std::inner_product(u.begin(),u.end(),u.begin(),0.0);
-	arma::colvec U = u/sqrt(Normu);
+//	double Normu = std::inner_product(u.begin(),u.end(),u.begin(),0.0);
+//	arma::colvec U = u/sqrt(Normu);
 
-	arma::colvec ux1 = 0.5*(U);
-	arma::colvec ux2 = 0.95*(U);
-
-	arma::colvec Q1 = KernelProjQuant(dx, Rcpp::wrap(ux1), k);
+/*	arma::colvec Q1 = KernelProjQuant(dx, Rcpp::wrap(ux1), k);
 	arma::colvec Q2 = KernelProjQuant(dx, Rcpp::wrap(ux2), k);
 
 	double norml1 = std::inner_product(Q1.begin(), Q1.end(), Q1.begin(), 0.0);
@@ -657,9 +654,17 @@ double KernelDepthMod(NumericMatrix dx, NumericVector ux, double k){
 	//double beta = alpha * Normu/norml;
 
 	double beta = -exp(-y)+1;
+	*/
+
+	arma::colvec Q = KernelProjQuant(dx, Rcpp::wrap(ux), k);
+	double norml = std::inner_product(Q.begin(), Q.end(), Q.begin(), 0.0);
+	double beta = sqrt(norml);
 
 	double Depth = exp(-fabs(beta-0.5));
 
 	return Depth;
 
 }
+
+
+
