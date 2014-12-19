@@ -51,15 +51,14 @@ wEPQD = function(X, sig, mingrid, maxgrid, res=.2, nu=1e3){
     #w = ifelse(scaled.perp>sig, 0, 1)
     #w = sig*exp(-scaled.perp/sig)
     w = 1
-    #w = dcauchy(Xuperp, scale=sig)
+    w = dnorm(scaled.perp, sd=sig)
     uecdf = ecdf(w * (X0%*%u))
     
     gridperp = grid0 %*% I.minus.Pu
     scaled.gridperp = sqrt(gridperp^2 %*% ones(ncol(X),1))
     #wu = ifelse(scaled.gridperp>sig, 0, 1)
     #wu = sig*exp(-scaled.gridperp/sig)
-    wu = 1
-    #wu = dcauchy(sqrt(apply(xygrid^2,1,sum) - xygrid.u^2), scale=sig)
+    wu = dnorm(scaled.gridperp, sd=sig)
     Fuxu.mat[,iu] = uecdf(wu * (grid0%*%u))
   }
   EPQD.vec = 1/(1+apply(abs(Fuxu.mat-.5), 1, max))
@@ -90,22 +89,21 @@ wEPQD = function(X, sig, mingrid, maxgrid, res=.2, nu=1e3){
 ## Empirically calculate PQD with grid search
 # Bivariate normal mixture
 set.seed(120214)
-sig = matrix(c(1,.5,.5,1), nrow=2)
+sig = matrix(c(1,.9,.9,1), nrow=2)
 sig2 = matrix(c(1,-.9,-.9,1), nrow=2)
-X1 = my.mvrnorm(500, mu=c(2,2), Sigma=sig)
-X2 = my.mvrnorm(500, mu=c(2,2), Sigma=sig)
-X3 = my.mvrnorm(500, mu=c(2,2), Sigma=sig)
-X = rbind(X1,X2,X3)
+X1 = my.mvrnorm(500, mu=c(-2,2), Sigma=sig)
+X3 = my.mvrnorm(500, mu=c(2,-2), Sigma=sig)
+X = rbind(X1,X3)
 
 ## rotation invariance
 m=100
 O = matrix(c(1,1,1,-1), ncol=2)*m
-k1 = wEPQD(X, sig=.00001, mingrid=0, maxgrid=1)
+k1 = wEPQD(X, sig=.7, mingrid=-5, maxgrid=5)
 k2 = wEPQD(X %*% O, sig=m, mingrid=-5*m, maxgrid=5*m, res=.2*m)
 max(abs(k1-k2), na.rm=T)
 
 # naive PQD
-sig=.02
+sig=1
 
 b = apply(X, 2, median)
 X0 = X - ones(nrow(X),1) %*% b
